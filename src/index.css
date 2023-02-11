@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Roboto Slab';
+	src: local('Roboto Slab');
+	src: url('./fonts/Roboto_slab/robotoslab-variablefont_wght-webfont.woff2') format('woff2')
+		tech('variations');
+	font-weight: 100 1000;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Rubik';
+	src: local('Rubik');
+	src: url('./fonts/Rubik/rubik-variablefont_wght-webfont.woff2') format('woff2') tech('variations');
+	font-weight: 100 1000;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: local('Montserrat');
+	src: url('./fonts/Montserrat/montserrat-variablefont_wght-webfont.woff2') format('woff2')
+		tech('variations');
+	font-weight: 100 1000;
+	font-style: normal;
+}
+
+/* -----------------
+	/* General CSS Reset */
+/*-------------------*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* -------------------------- */
+/* Making basic style resets */
+/* ------------------------- */
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+input,
+select,
+textarea,
+button {
+	font-family: inherit;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+	line-height: inherit;
+	border: none;
+	outline: none;
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: 'Rubik';
+	line-height: 1.5;
+}
