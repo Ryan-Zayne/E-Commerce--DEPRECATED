@@ -3,73 +3,85 @@
 @tailwind utilities;
 
 @font-face {
+	font-family: 'Rubik';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: local('Rubik'), url(https://fonts.gstatic.com/s/rubik/v23/iJWKBXyIfDnIV7nBrXw.woff2) format('woff2');
+}
+
+@font-face {
+	font-family: 'Rubik';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: local('Rubik'), url(https://fonts.gstatic.com/s/rubik/v23/iJWKBXyIfDnIV7nBrXw.woff2) format('woff2');
+}
+
+@font-face {
 	font-family: 'Roboto Slab';
-	src: local('Roboto Slab');
-	src: url('./fonts/Roboto_slab/robotoslab-variablefont_wght-webfont.woff2') format('woff2')
-		tech('variations');
-	font-weight: 100 1000;
 	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: local('Roboto Slab'),
+		url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2) format('woff2');
 }
-
 @font-face {
-	font-family: 'Rubik';
-	src: local('Rubik');
-	src: url('./fonts/Rubik/rubik-variablefont_wght-webfont.woff2') format('woff2') tech('variations');
-	font-weight: 100 1000;
+	font-family: 'Roboto Slab';
 	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: local('Roboto Slab'),
+		url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2) format('woff2');
 }
-
 @font-face {
-	font-family: 'Montserrat';
-	src: local('Montserrat');
-	src: url('./fonts/Montserrat/montserrat-variablefont_wght-webfont.woff2') format('woff2')
-		tech('variations');
-	font-weight: 100 1000;
+	font-family: 'Roboto Slab';
 	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src: local('Roboto Slab'),
+		url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2) format('woff2');
 }
 
-/* -----------------
+@layer base {
+	:root {
+		--color-primary: hsl(209, 17%, 24%);
+		--color-secondary: hsl(43, 100%, 55%);
+	}
+
+	/* -----------------
 	/* General CSS Reset */
-/*-------------------*/
+	/*-------------------*/
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+	/* -------------------------- */
+	/* Making basic style resets */
+	/* ------------------------- */
+	html {
+		font-size: 62.5%;
+		scroll-behavior: smooth;
+	}
 
-/* -------------------------- */
-/* Making basic style resets */
-/* ------------------------- */
-html {
-	font-size: 62.5%;
-	scroll-behavior: smooth;
-}
+	input:focus-visible {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+	}
 
-input,
-select,
-textarea,
-button {
-	font-family: inherit;
-}
+	img {
+		width: 100%;
+		max-width: unset;
+	}
 
-li {
-	list-style: none;
-}
+	button {
+		outline: transparent;
+	}
 
-a {
-	text-decoration: none;
-}
-
-button {
-	cursor: pointer;
-	line-height: inherit;
-	border: none;
-	outline: none;
-}
-
-body {
-	font-size: 1.6rem;
-	font-family: 'Rubik';
-	line-height: 1.5;
+	body {
+		font-size: 1.6rem;
+		font-family: 'Rubik', sans-serif;
+	}
 }
