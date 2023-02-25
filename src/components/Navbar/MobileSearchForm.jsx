@@ -1,11 +1,11 @@
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { twMerge } from 'tailwind-merge';
-import Button from '../../utils/Button';
+import Button from '../../lib/Button';
 
 const MobileSearchForm = ({ searchShow }) => {
 	const FORM_CLASSES = twMerge(`
-				mt-[1rem] px-[2rem] flex h-0 w-[100%] items-center overflow-hidden transition-[height] duration-500
-				${searchShow ? 'h-[7rem]' : ''}
+				mt-[1rem] px-[2rem] flex h-0 w-[100%] items-center overflow-hidden transition-[height] duration-[600ms] ease-out
+				${searchShow ? 'h-[7rem] duration-500' : ''}
 	`);
 
 	return (
@@ -13,8 +13,7 @@ const MobileSearchForm = ({ searchShow }) => {
 			<input
 				className="w-[100%] rounded-[2.5rem_0_0_2.5rem] border-secondary py-[0.6rem] pl-[2.3rem] transition-[box-shadow] duration-200 [border-width:2px_0_2px_2px] placeholder:font-[500] focus-within:shadow-[1px_0_10px_2px_var(--color-secondary)]"
 				type="text"
-				name=""
-				id=""
+				name="Search"
 				placeholder="Search for products..."
 			/>
 			<Button

@@ -1,1 +1,1 @@
-export { default as useMediaQuery } from './useMediaQuery';
+export { default as Button } from './Button';

@@ -14,6 +14,7 @@ module.exports = {
 			colors: {
 				primary: 'var(--color-primary)',
 				secondary: 'var(--color-secondary)',
+				'carousel-btn': 'var(--carousel-btn)'
 			},
 			backgroundImage: {},
 

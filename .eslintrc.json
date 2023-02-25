@@ -57,6 +57,7 @@
 				"peerDependencies": false
 			}
 		],
+		"import/prefer-default-export": "warn",
 		"react/jsx-indent": [2, "tab"],
 		"react/self-closing-comp": [
 			"error",
