@@ -8,14 +8,14 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 				flex md:gap-[4.5rem] text-white
 				${
 					!isDesktop
-						? 'z-[20] fixed flex-col w-0 gap-[3.2rem] bg-slate-600/80 pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
+						? 'z-[100] fixed flex-col w-0 gap-[3.2rem] bg-slate-600/80 pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
 						: ''
 				}
 				${navShow ? 'w-[24rem] [transition:width_500ms_ease]' : ''}
 	`);
 
 	const OVERLAY_CLASSES = twMerge(`
-				fixed z-[12] w-0 bg-[hsl(0,0%,0%,0.55)] [inset:0_0_0_auto] [transition:width_30ms_linear]
+				fixed z-[80] w-0 bg-[hsl(0,0%,0%,0.55)] [inset:0_0_0_auto] [transition:width_30ms_linear]
 				${navShow ? 'w-[100vw] [transition:width_500ms_ease-out]' : ''}
 		`);
 

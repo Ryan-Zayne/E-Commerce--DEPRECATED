@@ -40,7 +40,7 @@ const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 
 				{/* HARMBURGER ICON */}
 				{!isDesktop && (
-					<div className="z-30 w-[2.6rem]">
+					<div className="z-[120] w-[2.6rem]">
 						{navShow ? (
 							<RiCloseFill
 								className=" animate-[bounce_1.5s_ease_infinite]"

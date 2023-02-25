@@ -14,13 +14,33 @@ module.exports = {
 			colors: {
 				primary: 'var(--color-primary)',
 				secondary: 'var(--color-secondary)',
-				'carousel-btn': 'var(--carousel-btn)'
+				'carousel-btn': 'var(--carousel-btn)',
 			},
-			backgroundImage: {},
 
 			fontFamily: {
-				roboto: ['"Roboto Slab"', 'sans-serif'],
-				rubik: ['"Rubik"', 'sans-serif'],
+				roboto: ['"Roboto Slab"', 'Helvetica'],
+				rubik: ['"Rubik"', 'Trebuchet MS'],
+			},
+
+			animation: {
+				'fade-in-down': 'fade-in-down 1.3s',
+				'fade-in-up': 'fade-in-up 1.9s ease-out',
+				'fade-in-up-2': 'fade-in-up-2 1.3s ease-out',
+			},
+
+			keyframes: {
+				'fade-in-down': {
+					from: { opacity: '0', transform: 'translateY(-80%)' },
+					to: { opacity: '1', transform: 'translateY(0)' },
+				},
+				'fade-in-up': {
+					from: { opacity: '0', transform: 'translateY(100%)' },
+					to: { opacity: '1', transform: 'translateY(0)' },
+				},
+				'fade-in-up-2': {
+					from: { opacity: '0', transform: 'translateY(150%)' },
+					to: { opacity: '0.86', transform: 'translateY(0)' },
+				},
 			},
 		},
 	},

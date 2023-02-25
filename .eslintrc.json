@@ -17,13 +17,13 @@
 		"sourceType": "module"
 	},
 	"plugins": ["react", "tailwindcss"],
-
 	"rules": {
 		//Base Eslint Rules
 		"max-len": "off",
 		"indent": "off",
 		"no-tabs": "off",
 		"eol-last": "off",
+		"no-return-assign": ["error", "except-parens"],
 		"no-use-before-define": [
 			"error",
 			{
@@ -36,7 +36,6 @@
 				"max": 3
 			}
 		],
-
 		"object-curly-newline": [
 			"error",
 			{
@@ -45,7 +44,6 @@
 		],
 		"comma-dangle": "off",
 		"arrow-body-style": "off",
-
 		//React plugin rules
 		"quote-props": "off",
 		"react/prop-types": "off",
@@ -75,7 +73,6 @@
 		],
 		"react/button-has-type": "off",
 		"react/function-component-definition": "off",
-
 		//Tailwind rules
 		"tailwindcss/no-custom-classname": "off",
 		"tailwindcss/classnames-order": [

@@ -15,7 +15,7 @@ const Button = ({ theme = 'primary', variant = 'regular', size = 'md', children,
 				return 'bg-secondary text-primary';
 			// Sizes
 			case 'sm':
-				return 'p-[1.1rem_1.4rem]';
+				return 'p-[1.1rem_1.3rem]';
 			case 'md':
 				return 'p-[1.1rem_3.5rem]';
 			case 'lg':

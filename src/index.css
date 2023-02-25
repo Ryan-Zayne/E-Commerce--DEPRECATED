@@ -2,44 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	font-family: 'Rubik';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url(https://fonts.gstatic.com/s/rubik/v23/iJWKBXyIfDnIV7nBrXw.woff2) format('woff2');
-}
-
-@font-face {
-	font-family: 'Rubik';
-	font-style: normal;
-	font-weight: 500;
-	font-display: swap;
-	src: url(https://fonts.gstatic.com/s/rubik/v23/iJWKBXyIfDnIV7nBrXw.woff2) format('woff2');
-}
-
-@font-face {
-	font-family: 'Roboto Slab';
-	font-style: normal;
-	font-weight: 500;
-	font-display: swap;
-	src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2) format('woff2');
-}
-@font-face {
-	font-family: 'Roboto Slab';
-	font-style: normal;
-	font-weight: 600;
-	font-display: swap;
-	src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2) format('woff2');
-}
-@font-face {
-	font-family: 'Roboto Slab';
-	font-style: normal;
-	font-weight: 800;
-	font-display: swap;
-	src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2) format('woff2');
-}
-
 @layer base {
 	:root {
 		--color-primary: hsl(209, 17%, 24%);
@@ -80,6 +42,6 @@
 
 	body {
 		font-size: 1.6rem;
-		font-family: 'Rubik', sans-serif;
+		font-family: 'Rubik', 'Trebuchet MS', sans-serif;
 	}
 }
