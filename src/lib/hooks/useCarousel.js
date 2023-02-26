@@ -5,21 +5,21 @@ const useCarousel = (imageArray) => {
 
 	const maxSlide = imageArray.length - 1;
 
-	const previousSlideButton = () => {
+	function previousSlideButton() {
 		if (currentSlide === 0) {
 			setCurrentSlide(maxSlide);
 		} else {
 			setCurrentSlide((prev) => prev - 1);
 		}
-	};
+	}
 
-	const nextSlideButton = () => {
+	function nextSlideButton() {
 		if (currentSlide === maxSlide) {
 			setCurrentSlide(0);
 		} else {
 			setCurrentSlide((prev) => prev + 1);
 		}
-	};
+	}
 
 	useEffect(() => {
 		const infiniteScroll = setInterval(() => nextSlideButton(), 5000);

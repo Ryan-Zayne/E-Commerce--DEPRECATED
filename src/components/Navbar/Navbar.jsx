@@ -21,8 +21,10 @@ const Navbar = () => {
 				navShow={navShow}
 				navShowHandler={navShowHandler}
 			/>
+
 			{/* SEARCH BAR FOR MOBILE */}
 			{isMobile && <MobileSearchForm searchShow={searchBarShow} />}
+
 			{/* NAVIGATION LIST */}
 			<NavBarLinks navShowHandler={navShowHandler} navShow={navShow} logo={logo} />
 		</section>

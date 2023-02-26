@@ -12,7 +12,7 @@ const useAnimateRef = () => {
 			current.heading.classList.remove('animate-fade-in-down');
 			current.button.classList.remove('animate-fade-in-up');
 			current.paragraph.classList.remove('animate-fade-in-up-2');
-		}, 3000);
+		}, 2000);
 
 		return () => clearTimeout(fadeAnimation);
 	});

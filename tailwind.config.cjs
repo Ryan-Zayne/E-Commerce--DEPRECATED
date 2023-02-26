@@ -15,6 +15,13 @@ module.exports = {
 				primary: 'var(--color-primary)',
 				secondary: 'var(--color-secondary)',
 				'carousel-btn': 'var(--carousel-btn)',
+				'carousel-dot': 'var(--carousel-dot)',
+				heading: 'var(--text-header)',
+				dark: 'var(--text-dark)',
+				light: 'var(--text-light)',
+				placeholder: 'var(--text-placeholder)',
+				navbar: 'var(--color-navbar)',
+				'dark-ball': 'var(--dark-mode-ball)',
 			},
 
 			fontFamily: {

@@ -12,13 +12,13 @@ const useMediaQuery = () => {
 		const tabletQuery = window.matchMedia('(min-width: 768px)');
 		const desktopQuery = window.matchMedia('(min-width: 1000px)');
 
-		const updateMatches = () => {
+		function updateMatches() {
 			setMediaQueries({
 				isMobile: mobileQuery.matches,
 				isTablet: tabletQuery.matches,
 				isDesktop: desktopQuery.matches,
 			});
-		};
+		}
 
 		mobileQuery.addEventListener('change', updateMatches);
 		tabletQuery.addEventListener('change', updateMatches);

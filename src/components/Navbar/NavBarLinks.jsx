@@ -9,7 +9,7 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 				flex md:gap-[4.5rem]
 				${
 					!isDesktop
-						? 'z-[100] fixed text-white flex-col w-0 gap-[3.2rem] bg-slate-600/80 pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
+						? 'z-[100] fixed text-[1.4rem] md:text-[1.6rem] text-body flex-col w-0 gap-[3.2rem] bg-navbar pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
 						: ''
 				}
 				${navShow ? 'w-[24rem] [transition:width_500ms_ease]' : ''}
@@ -32,7 +32,8 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 
 			{/* NAVBAR LINKS */}
 			<nav className="flex w-[100%] items-center justify-between font-[500] lg:px-[2rem] ">
-				{isDesktop && <button>Shop By Category</button>}.
+				{isDesktop && <button>Shop By Category</button>}
+
 				<ul className={styles.NAVLIST_CLASSES}>
 					{!isDesktop && <img className="ml-[4rem] mb-[2rem] w-[16rem]" src={logo} alt="" />}
 					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Home</li>
@@ -40,6 +41,7 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Product</li>
 					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Contact</li>
 				</ul>
+
 				{isDesktop && (
 					<p>
 						Free shipping on <span>Orders $50</span>

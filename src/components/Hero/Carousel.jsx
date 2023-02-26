@@ -16,8 +16,8 @@ const Carousel = () => {
 			onClick={() => setCurrentSlide(index)}
 			key={item}
 			className={twMerge(`
-		inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-slate-200 hover:[box-shadow:0_0_5px_white]
-		${index === currentSlide ? 'w-[1.2rem] bg-slate-200' : ''}
+		inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
+		${index === currentSlide ? 'w-[1.2rem] bg-carousel-dot' : ''}
 		`)}
 		/>
 	));
@@ -38,26 +38,28 @@ const Carousel = () => {
 	});
 
 	return (
-		<section className="relative mx-[0.5rem] mt-[1rem] flex h-[38rem] rounded-[5px] bg-primary">
+		<section className="relative mx-[0.5rem] mt-[1rem] flex h-[38rem]">
 			<button
 				onClick={previousSlideButton}
-				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_white] active:scale-[1.1]"
+				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
 			>
 				<RxPaperPlane />
 			</button>
 
-			<article className="relative w-[100%] overflow-hidden brightness-[0.4]">{renderedImages}</article>
+			<article className="relative w-[100%] overflow-hidden rounded-[5px] bg-primary brightness-[0.57]">
+				{renderedImages}
+			</article>
 
 			<span className="absolute bottom-[2.5rem] inline-flex w-[100%] items-center justify-center gap-[1.5rem]">
 				{carouselDots}
 			</span>
 
-			<article className="absolute mt-[5.5rem] flex w-[100%] select-none flex-col items-start gap-[1rem] px-[3.5rem] text-white">
+			<article className="absolute mt-[5.5rem] flex w-[100%] select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light">
 				{/* Heading and Caption */}
 				<div className="w-[28ch]">
 					<h1
 						ref={(elem) => (animatedElements.heading = elem)}
-						className="font-roboto text-[2.5rem] font-[500] text-secondary"
+						className="font-roboto text-[2.5rem] font-[500] text-heading"
 					>
 						Explore the Future of Technology
 					</h1>
@@ -82,7 +84,7 @@ const Carousel = () => {
 
 			<button
 				onClick={nextSlideButton}
-				className="absolute right-[0.4rem] top-[45%] z-10 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_white] active:scale-[1.1]"
+				className="absolute right-[0.4rem] top-[45%] z-10 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
 			>
 				<RxPaperPlane />
 			</button>
