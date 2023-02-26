@@ -22,7 +22,7 @@ const useCarousel = (imageArray) => {
 	}
 
 	useEffect(() => {
-		const infiniteScroll = setInterval(() => nextSlideButton(), 6000);
+		const infiniteScroll = setInterval(() => nextSlideButton(), 7000);
 		return () => clearInterval(infiniteScroll);
 	});
 
