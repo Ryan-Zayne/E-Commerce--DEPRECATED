@@ -6,8 +6,8 @@ import { useMediaQuery } from '../../lib/hooks';
 const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 	const { isMobile, isTablet, isDesktop } = useMediaQuery();
 	return (
-		<article className="top-row flex w-[100%] select-none justify-between gap-[2rem] px-[0.8rem]">
-			<img className="w-[16rem]" src={logo} alt="" />
+		<article className="top-row flex w-[100%] select-none justify-between gap-[2rem] px-[1rem]">
+			<img className="w-[12rem] md:w-[16rem]" src={logo} alt="" />
 
 			{isTablet && (
 				<form className="flex w-[min(100%,_54vw)] items-center" onSubmit={(e) => e.preventDefault()}>
