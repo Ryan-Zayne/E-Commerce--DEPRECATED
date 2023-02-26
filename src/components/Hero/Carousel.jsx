@@ -38,7 +38,7 @@ const Carousel = () => {
 	});
 
 	return (
-		<section className="relative mx-[0.4rem] mt-[3rem] flex h-[38rem] rounded-[5px] bg-primary">
+		<section className="relative mx-[0.5rem] mt-[3rem] flex h-[38rem] rounded-[5px] bg-primary">
 			<button
 				onClick={previousSlideButton}
 				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_white] active:scale-[1.1]"
