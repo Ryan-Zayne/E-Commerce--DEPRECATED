@@ -4,12 +4,34 @@
 
 @layer base {
 	:root {
+		--text-header: hsl(43, 100%, 55%);
+		--text-light: hsl(0, 17%, 93%);
+		--text-dark: hsl(212, 11%, 23%);
+		--text-placeholder: hsl(34, 5%, 30%);
 		--color-primary: hsl(209, 17%, 24%);
 		--color-secondary: hsl(43, 100%, 55%);
+		--color-navbar: hsl(215, 19%, 35%, 0.8);
 		--carousel-btn: hsl(0, 0%, 80%, 0.4);
+		--carousel-dot: hsl(214, 32%, 91%);
+		--dark-mode-ball: var(--carousel-dot)
 	}
 
-	/* -----------------
+	:root[data-theme='dark'] {
+		--text-header: hsl(43, 67%, 50%);
+		--text-light: hsl(34, 5%, 71%);
+		--text-body: hsl(30, 3%, 75%);
+		--text-dark: var(--text-body);
+		--color-primary: hsl(206, 15%, 18%);
+		--color-secondary: hsl(43, 91%, 25%);
+		--color-navbar: hsl(215, 17%, 25%, 0.8);
+		--color-body: hsl(200, 6%, 10%);
+		--carousel-btn: hsl(204, 5%, 20%, 0.4);
+		--carousel-dot: hsl(212, 8%, 64%);
+		--dark-mode-ball: hsl(197.1, 4.9%, 28%);
+	}
+
+
+	/* ------------------*/
 	/* General CSS Reset */
 	/*-------------------*/
 	* {
@@ -17,6 +39,7 @@
 		padding: 0;
 		box-sizing: border-box;
 	}
+
 
 	/* -------------------------- */
 	/* Making basic style resets */
@@ -43,5 +66,16 @@
 	body {
 		font-size: 1.6rem;
 		font-family: 'Rubik', 'Trebuchet MS', sans-serif;
+		background-color: var(--color-body, white);
+		color: var(--text-body);
 	}
+}
+
+@layer components {
+
+	.theme-transition,
+	.theme-transition * {
+		transition: color 300ms linear, background-color 300ms linear;
+	}
+
 }
