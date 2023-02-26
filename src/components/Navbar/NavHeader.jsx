@@ -44,7 +44,7 @@ const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 					<div className="z-[120] w-[2.6rem]">
 						{navShow ? (
 							<RiCloseFill
-								className="animate-[bounce_1.5s_ease_infinite] text-[2.6rem]"
+								className="text-[2.6rem] md:animate-[bounce_1.5s_ease_infinite]"
 								onClick={navShowHandler}
 							/>
 						) : (
