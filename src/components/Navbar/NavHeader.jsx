@@ -20,7 +20,7 @@ const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 					/>
 
 					<Button
-						className="text-[1.8rem] transition-colors duration-300 hover:bg-primary hover:text-heading active:scale-[1.028]"
+						className="text-[1.8rem] transition-colors duration-300 hover:bg-primary hover:text-heading active:scale-[1.08]"
 						variant={'input'}
 						size={'sm'}
 						theme={'secondary'}
