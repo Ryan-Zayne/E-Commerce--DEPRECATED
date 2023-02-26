@@ -14,14 +14,14 @@
 		"react-icons": "^4.7.1"
 	},
 	"devDependencies": {
-		"@types/react": "^18.0.27",
-		"@types/react-dom": "^18.0.10",
-		"@vitejs/plugin-react-swc": "^3.0.0",
+		"@types/react": "^18.0.28",
+		"@types/react-dom": "^18.0.11",
+		"@vitejs/plugin-react-swc": "^3.2.0",
 		"autoprefixer": "^10.4.13",
 		"postcss": "^8.4.21",
-		"tailwind-merge": "^1.9.1",
-		"tailwindcss": "^3.2.4",
-		"vite": "^4.1.0",
-		"vite-node": "^0.28.4"
+		"tailwind-merge": "^1.10.0",
+		"tailwindcss": "^3.2.7",
+		"vite": "^4.1.4",
+		"vite-node": "^0.28.5"
 	}
 }

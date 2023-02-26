@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import logo from '../../assets/logo.svg';
 import { useMediaQuery } from '../../lib/hooks';
+import logo from '../../assets/logo.svg';
 import MobileSearchForm from './MobileSearchForm';
 import NavBarLinks from './NavBarLinks';
 import NavHeader from './NavHeader';
 
 const Navbar = () => {
-	const { isMobile } = useMediaQuery();
 	const [searchBarShow, setSearchBarShow] = useState(false);
 	const [navShow, setNavShow] = useState(false);
-
+	const { isMobile } = useMediaQuery();
 	const searchShowHandler = () => setSearchBarShow((prev) => !prev);
 	const navShowHandler = () => setNavShow((prev) => !prev);
 
@@ -22,10 +21,8 @@ const Navbar = () => {
 				navShow={navShow}
 				navShowHandler={navShowHandler}
 			/>
-
 			{/* SEARCH BAR FOR MOBILE */}
 			{isMobile && <MobileSearchForm searchShow={searchBarShow} />}
-
 			{/* NAVIGATION LIST */}
 			<NavBarLinks navShowHandler={navShowHandler} navShow={navShow} logo={logo} />
 		</section>

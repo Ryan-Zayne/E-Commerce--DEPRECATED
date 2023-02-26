@@ -5,10 +5,10 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 	const { isDesktop } = useMediaQuery();
 
 	const NAVLIST_CLASSES = twMerge(`
-				flex md:gap-[4.5rem] text-white
+				flex md:gap-[4.5rem]
 				${
 					!isDesktop
-						? 'z-[100] fixed flex-col w-0 gap-[3.2rem] bg-slate-600/80 pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
+						? 'z-[100] fixed text-white flex-col w-0 gap-[3.2rem] bg-slate-600/80 pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
 						: ''
 				}
 				${navShow ? 'w-[24rem] [transition:width_500ms_ease]' : ''}
