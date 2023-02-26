@@ -36,7 +36,7 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 
 				<ul className={styles.NAVLIST_CLASSES}>
 					{!isDesktop && (
-						<img className="ml-[4rem] mb-[2rem] w-[12rem] md:w-[16rem]" src={logo} alt="" />
+						<img className="ml-[4rem] mb-[2rem] w-[13rem] md:w-[16rem]" src={logo} alt="" />
 					)}
 					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Home</li>
 					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Categories</li>
