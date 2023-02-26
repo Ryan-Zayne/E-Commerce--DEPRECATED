@@ -6,8 +6,8 @@ import { useMediaQuery } from '../../lib/hooks';
 const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 	const { isMobile, isTablet, isDesktop } = useMediaQuery();
 	return (
-		<article className="top-row flex w-[100%] justify-between gap-[2rem] px-[2vw]">
-			<img className="max-w-[16rem]" src={logo} alt="" />
+		<article className="top-row flex w-[100%] select-none justify-between gap-[2rem] px-[0.8rem]">
+			<img className="w-[16rem]" src={logo} alt="" />
 
 			{isTablet && (
 				<form className="flex w-[min(100%,_54vw)] items-center" onSubmit={(e) => e.preventDefault()}>
@@ -30,7 +30,7 @@ const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 				</form>
 			)}
 
-			<div className="flex items-center justify-between text-[2rem] [width:clamp(12rem,_42vw,_22rem)]">
+			<div className="flex items-center justify-between gap-[1rem] text-[2rem] [width:clamp(18rem,_42vw,_22rem)]">
 				{isMobile && (
 					<BiSearchAlt2 className="cursor-pointer active:scale-[1.2]" onClick={searchShowHandler} />
 				)}

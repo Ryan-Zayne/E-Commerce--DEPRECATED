@@ -46,7 +46,7 @@ const Carousel = () => {
 				<RxPaperPlane />
 			</button>
 
-			<article className="relative w-[100%] overflow-hidden rounded-[5px] bg-primary brightness-[0.57]">
+			<article className="relative w-[100%] overflow-hidden rounded-[5px] bg-primary brightness-[0.6]">
 				{renderedImages}
 			</article>
 

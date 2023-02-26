@@ -24,7 +24,7 @@
 		--color-primary: hsl(206, 15%, 18%);
 		--color-secondary: hsl(43, 91%, 25%);
 		--color-navbar: hsl(215, 17%, 25%, 0.8);
-		--color-body: hsl(200, 6%, 10%);
+		--color-body: hsl(210, 4%, 11%);
 		--carousel-btn: hsl(204, 5%, 20%, 0.4);
 		--carousel-dot: hsl(212, 8%, 64%);
 		--dark-mode-ball: hsl(197.1, 4.9%, 28%);
@@ -71,11 +71,11 @@
 	}
 }
 
-@layer components {
+/* @layer components {
 
 	.theme-transition,
 	.theme-transition * {
 		transition: color 300ms linear, background-color 300ms linear;
 	}
 
-}
+} */
