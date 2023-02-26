@@ -12,12 +12,12 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 						? 'z-[100] fixed text-[1.4rem] md:text-[1.6rem] text-body flex-col w-0 gap-[3.2rem] bg-navbar pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
 						: ''
 				}
-				${navShow ? 'w-[24rem] [transition:width_500ms_ease]' : ''}
+				${navShow ? 'md:w-[24rem] w-[18rem] [transition:width_500ms_ease]' : ''}
 		`),
 
 		OVERLAY_CLASSES: twMerge(`
-				fixed z-[80] w-0 bg-[hsl(0,0%,0%,0.55)] [inset:0_0_0_auto] [transition:width_30ms_linear]
-				${navShow ? 'w-[100vw] [transition:width_500ms_ease-out]' : ''}
+				fixed z-[80] w-0 bg-[hsl(0,0%,0%,0.55)] [inset:0_0_0_auto]
+				${navShow ? 'w-[100vw]' : ''}
 		`),
 	};
 
@@ -35,7 +35,9 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 				{isDesktop && <button>Shop By Category</button>}
 
 				<ul className={styles.NAVLIST_CLASSES}>
-					{!isDesktop && <img className="ml-[4rem] mb-[2rem] w-[16rem]" src={logo} alt="" />}
+					{!isDesktop && (
+						<img className="ml-[4rem] mb-[2rem] w-[12rem] md:w-[16rem]" src={logo} alt="" />
+					)}
 					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Home</li>
 					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Categories</li>
 					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Product</li>
