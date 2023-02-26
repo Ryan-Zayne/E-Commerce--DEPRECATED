@@ -12,7 +12,7 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 						? 'z-[100] fixed text-[1.4rem] md:text-[1.6rem] text-body flex-col w-0 gap-[3.2rem] bg-navbar pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
 						: ''
 				}
-				${navShow ? 'md:w-[24rem] w-[50%] [transition:width_500ms_ease]' : ''}
+				${navShow ? 'md:w-[24rem] w-[56%] [transition:width_500ms_ease]' : ''}
 		`),
 
 		OVERLAY_CLASSES: twMerge(`
