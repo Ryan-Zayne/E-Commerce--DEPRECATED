@@ -48,7 +48,7 @@ const Carousel = () => {
 
 			<div
 				className={`relative  w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.52] ${
-					isDarkMode ? '[box-shadow:0_0_15px_1px_var(--text-dark)]' : ''
+					isDarkMode ? '[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''
 				}`}
 			>
 				{renderedImages}
