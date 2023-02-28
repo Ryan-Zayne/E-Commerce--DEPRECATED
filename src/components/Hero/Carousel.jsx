@@ -1,14 +1,14 @@
 import { RxPaperPlane } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
 import { Button } from '../common';
-import { useAnimateRef, useCarousel } from '../../hooks';
+import { useAnimateRef, useCarousel, useColorScheme } from '../../hooks';
 import { laptop1, laptop2, phone1, phone2, tablet2, tablet3 } from './assets';
 
 const Carousel = () => {
 	const images = [laptop1, phone1, tablet2, phone2, tablet3, laptop2];
 
+	const { isDarkMode } = useColorScheme();
 	const { currentSlide, setCurrentSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
-
 	const { current: animatedElements } = useAnimateRef();
 
 	const carouselDots = images.map((item, index) => (
@@ -38,7 +38,7 @@ const Carousel = () => {
 	});
 
 	return (
-		<section className="relative mx-[0.5rem] mt-[1rem] flex h-[38rem]">
+		<section className="relative mx-[0.7rem] mt-[1rem] flex h-[38rem]">
 			<button
 				onClick={previousSlideButton}
 				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
@@ -46,7 +46,11 @@ const Carousel = () => {
 				<RxPaperPlane />
 			</button>
 
-			<div className="relative w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.52]">
+			<div
+				className={`relative  w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.52] ${
+					isDarkMode ? '[box-shadow:0_0_15px_1px_var(--text-dark)]' : ''
+				}`}
+			>
 				{renderedImages}
 			</div>
 			<span className="absolute bottom-[2.5rem] inline-flex w-full items-center justify-center gap-[1.5rem]">

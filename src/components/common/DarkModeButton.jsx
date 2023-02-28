@@ -1,14 +1,15 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { BsFillMoonStarsFill } from 'react-icons/bs';
 import { FaSun } from 'react-icons/fa';
-import useLocalStorage from 'use-local-storage';
+import { ThemeContext } from '../../context/ThemeContext';
+import { useColorScheme } from '../../hooks';
 
 const DarkModeButton = ({ display }) => {
-	const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+	const { theme, setTheme } = useContext(ThemeContext);
+	const { isDarkMode } = useColorScheme();
 
 	function themeSwitcher() {
-		const newTheme = theme === 'dark' ? 'light' : 'dark';
+		const newTheme = isDarkMode ? 'light' : 'dark';
 		setTheme(newTheme);
 	}
 
@@ -27,7 +28,7 @@ const DarkModeButton = ({ display }) => {
 				<span
 					className={`
 						absolute bottom-[0.37rem] aspect-square w-[1.5rem] rounded-[50%] bg-dark-ball transition-transform duration-[750ms] ease-in-out
-						${theme === 'dark' ? 'translate-x-[1.75rem]' : ''}
+						${isDarkMode ? 'translate-x-[1.75rem]' : ''}
 					`}
 				/>
 			</div>
