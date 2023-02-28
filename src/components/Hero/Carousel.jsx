@@ -9,7 +9,18 @@ const Carousel = () => {
 
 	const { currentSlide, setCurrentSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
 
-	const { current: animatedElements } = useAnimateRef();
+	const animatedElements = useAnimateRef();
+
+	const carouselDots = images.map((item, index) => (
+		<span
+			onClick={() => setCurrentSlide(index)}
+			key={item}
+			className={twMerge(`
+		inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
+		${index === currentSlide ? 'w-[1.2rem] bg-carousel-dot' : ''}
+		`)}
+		/>
+	));
 
 	const renderedImages = images.map((image, index) => {
 		return (
