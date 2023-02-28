@@ -46,6 +46,10 @@
 	/* ------------------------- */
 	html {
 		font-size: 62.5%;
+	}
+
+	html,
+	body {
 		scroll-behavior: smooth;
 	}
 
@@ -56,6 +60,7 @@
 
 	img {
 		width: 100%;
+		max-inline-size: 100%;
 		max-width: unset;
 	}
 

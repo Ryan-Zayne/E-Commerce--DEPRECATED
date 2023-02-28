@@ -12,7 +12,7 @@ const useMediaQuery = () => {
 		const tabletQuery = window.matchMedia('(min-width: 768px)');
 		const desktopQuery = window.matchMedia('(min-width: 1000px)');
 
-		function updateMatches() {
+		function handleMediaQueryChange() {
 			setMediaQueries({
 				isMobile: mobileQuery.matches,
 				isTablet: tabletQuery.matches,
@@ -20,14 +20,14 @@ const useMediaQuery = () => {
 			});
 		}
 
-		mobileQuery.addEventListener('change', updateMatches);
-		tabletQuery.addEventListener('change', updateMatches);
-		desktopQuery.addEventListener('change', updateMatches);
+		mobileQuery.addEventListener('change', handleMediaQueryChange);
+		tabletQuery.addEventListener('change', handleMediaQueryChange);
+		desktopQuery.addEventListener('change', handleMediaQueryChange);
 
 		return () => {
-			mobileQuery.removeEventListener('change', updateMatches);
-			tabletQuery.removeEventListener('change', updateMatches);
-			desktopQuery.removeEventListener('change', updateMatches);
+			mobileQuery.removeEventListener('change', handleMediaQueryChange);
+			tabletQuery.removeEventListener('change', handleMediaQueryChange);
+			desktopQuery.removeEventListener('change', handleMediaQueryChange);
 		};
 	}, []);
 

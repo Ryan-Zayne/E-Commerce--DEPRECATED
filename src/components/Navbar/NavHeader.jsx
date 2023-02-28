@@ -1,18 +1,19 @@
 import { BiCartAlt, BiHeart, BiSearchAlt2, BiUser } from 'react-icons/bi';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
-import { Button, DarkModeButton } from '../../lib';
-import { useMediaQuery } from '../../lib/hooks';
+import { Button, DarkModeButton } from '../common';
+import { useMediaQuery } from '../../hooks';
 
 const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 	const { isMobile, isTablet, isDesktop } = useMediaQuery();
+
 	return (
-		<article className="top-row flex w-[100%] select-none justify-between gap-[1rem] px-[1rem]">
+		<article className="top-row flex w-full select-none justify-between gap-[1rem] px-[1rem]">
 			<img className="w-[13rem] md:w-[16rem]" src={logo} alt="" />
 
 			{isTablet && (
 				<form className="flex w-[min(100%,_54vw)] items-center" onSubmit={(e) => e.preventDefault()}>
 					<input
-						className="w-[100%] rounded-[2.5rem_0_0_2.5rem] border-secondary bg-[var(--color-body,_white)] py-[0.6rem] pl-[2.3rem] transition-[box-shadow] duration-200 [border-width:2px_0_2px_2px] placeholder:font-[500] placeholder:text-placeholder focus-within:shadow-[1px_0_10px_2px_var(--color-secondary)]"
+						className="w-full rounded-[2.5rem_0_0_2.5rem] border-secondary bg-[var(--color-body,_white)] py-[0.6rem] pl-[2.3rem] transition-[box-shadow] duration-200 [border-width:2px_0_2px_2px] placeholder:font-[500] placeholder:text-placeholder focus-within:shadow-[1px_0_10px_2px_var(--color-secondary)]"
 						type="text"
 						name=""
 						id=""
@@ -30,7 +31,7 @@ const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 				</form>
 			)}
 
-			<div className="flex items-center justify-between gap-[1rem] text-[2rem] [width:clamp(18rem,_42vw,_22rem)]">
+			<div className="flex w-[clamp(18rem,_42vw,_22rem)] items-center justify-between gap-[1rem] text-[2rem]">
 				{isMobile && (
 					<BiSearchAlt2 className="cursor-pointer active:scale-[1.2]" onClick={searchShowHandler} />
 				)}

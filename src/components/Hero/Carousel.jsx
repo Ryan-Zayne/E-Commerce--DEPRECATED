@@ -1,32 +1,21 @@
 import { RxPaperPlane } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
-import { Button } from '../../lib';
-import { useAnimateRef, useCarousel } from '../../lib/hooks';
-import { laptop2, laptop3, phone1, phone2, tablet2, tablet3 } from './assets';
+import { Button } from '../common';
+import { useAnimateRef, useCarousel } from '../../hooks';
+import { laptop1, laptop2, phone1, phone2, tablet2, tablet3 } from './assets';
 
 const Carousel = () => {
-	const images = [laptop3, laptop2, phone1, tablet2, phone2, tablet3];
+	const images = [laptop1, phone1, tablet2, phone2, tablet3, laptop2];
 
 	const { currentSlide, setCurrentSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
 
-	const animatedElements = useAnimateRef();
-
-	const carouselDots = images.map((item, index) => (
-		<span
-			onClick={() => setCurrentSlide(index)}
-			key={item}
-			className={twMerge(`
-		inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
-		${index === currentSlide ? 'w-[1.2rem] bg-carousel-dot' : ''}
-		`)}
-		/>
-	));
+	const { animatedElements } = useAnimateRef();
 
 	const renderedImages = images.map((image, index) => {
 		return (
 			<img
 				key={image}
-				className="absolute h-[100%] object-cover transition-[opacity,transform] duration-[1000ms] ease-in"
+				className="absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[1000ms] ease-in"
 				src={image}
 				alt=""
 				style={{
@@ -37,6 +26,17 @@ const Carousel = () => {
 		);
 	});
 
+	const carouselDots = images.map((item, index) => (
+		<span
+			onClick={() => setCurrentSlide(index)}
+			key={item}
+			className={twMerge(`
+				inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
+				${index === currentSlide ? 'w-[1.2rem] bg-carousel-dot' : ''}
+			`)}
+		/>
+	));
+
 	return (
 		<section className="relative mx-[0.5rem] mt-[1rem] flex h-[38rem]">
 			<button
@@ -46,15 +46,14 @@ const Carousel = () => {
 				<RxPaperPlane />
 			</button>
 
-			<article className="relative w-[100%] overflow-hidden rounded-[5px] bg-primary brightness-[0.6]">
+			<div className="relative w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.52]">
 				{renderedImages}
-			</article>
-
-			<span className="absolute bottom-[2.5rem] inline-flex w-[100%] items-center justify-center gap-[1.5rem]">
+			</div>
+			<span className="absolute bottom-[2.5rem] inline-flex w-full items-center justify-center gap-[1.5rem]">
 				{carouselDots}
 			</span>
 
-			<article className="absolute mt-[5.5rem] flex w-[100%] select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light">
+			<article className="absolute mt-[5.5rem] flex w-full select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light">
 				{/* Heading and Caption */}
 				<div className="w-[28ch]">
 					<h1
@@ -71,6 +70,7 @@ const Carousel = () => {
 						Needs.
 					</p>
 				</div>
+
 				{/* Shop-Now button */}
 				<div ref={(elem) => (animatedElements.button = elem)}>
 					<Button
