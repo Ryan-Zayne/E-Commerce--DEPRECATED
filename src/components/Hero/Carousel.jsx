@@ -47,7 +47,7 @@ const Carousel = () => {
 			</button>
 
 			<div
-				className={`relative w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.4]${
+				className={`relative w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.6] contrast-[1] ${
 					isDarkMode ? '[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''
 				}`}
 			>
