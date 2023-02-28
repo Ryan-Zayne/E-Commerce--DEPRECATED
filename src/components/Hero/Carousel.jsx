@@ -9,7 +9,7 @@ const Carousel = () => {
 
 	const { currentSlide, setCurrentSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
 
-	const animatedElements = useAnimateRef();
+	const { current: animatedElements } = useAnimateRef();
 
 	const carouselDots = images.map((item, index) => (
 		<span
