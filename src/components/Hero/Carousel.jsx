@@ -16,9 +16,9 @@ const Carousel = () => {
 			onClick={() => setCurrentSlide(index)}
 			key={item}
 			className={twMerge(`
-		inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
-		${index === currentSlide ? 'w-[1.2rem] bg-carousel-dot' : ''}
-		`)}
+				inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
+				${index === currentSlide ? 'w-[1.2rem] bg-carousel-dot' : ''}
+			`)}
 		/>
 	));
 
