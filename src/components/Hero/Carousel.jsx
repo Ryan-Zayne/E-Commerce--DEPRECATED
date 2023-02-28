@@ -37,17 +37,6 @@ const Carousel = () => {
 		);
 	});
 
-	const carouselDots = images.map((item, index) => (
-		<span
-			onClick={() => setCurrentSlide(index)}
-			key={item}
-			className={twMerge(`
-				inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
-				${index === currentSlide ? 'w-[1.2rem] bg-carousel-dot' : ''}
-			`)}
-		/>
-	));
-
 	return (
 		<section className="relative mx-[0.5rem] mt-[1rem] flex h-[38rem]">
 			<button
