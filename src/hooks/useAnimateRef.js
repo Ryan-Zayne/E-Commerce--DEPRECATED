@@ -17,7 +17,7 @@ const useAnimateRef = () => {
 		return () => clearTimeout(fadeAnimation);
 	});
 
-	return current;
+	return { current };
 };
 
 export default useAnimateRef;

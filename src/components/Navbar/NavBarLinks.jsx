@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge';
-import { useMediaQuery } from '../../lib/hooks';
+import { useMediaQuery } from '../../hooks';
 
 const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 	const { isDesktop } = useMediaQuery();
@@ -12,17 +12,17 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 						? 'z-[100] fixed text-[1.4rem] md:text-[1.6rem] text-body flex-col w-0 gap-[3.2rem] bg-navbar pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
 						: ''
 				}
-				${navShow ? 'md:w-[24rem] w-[56%] [transition:width_500ms_ease]' : ''}
+				${navShow ? 'w-[min(21rem,_56%)] [transition:width_500ms_ease]' : ''}
 		`),
 
 		OVERLAY_CLASSES: twMerge(`
 				fixed z-[80] w-0 bg-[hsl(0,0%,0%,0.55)] [inset:0_0_0_auto]
-				${navShow ? 'w-[100vw]' : ''}
+				${navShow ? 'w-screen' : ''}
 		`),
 	};
 
 	return (
-		<article className="w-[100%]">
+		<article className="w-full">
 			{/* OVERLAY FOR MOBILE AND TABLET VIEWS */}
 			{!isDesktop && (
 				<div onClick={navShowHandler} className={styles.OVERLAY_CLASSES}>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useMediaQuery } from '../../lib/hooks';
+import { useMediaQuery } from '../../hooks';
 import logo from '../../assets/logo.svg';
 import MobileSearchForm from './MobileSearchForm';
 import NavBarLinks from './NavBarLinks';

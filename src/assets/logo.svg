@@ -14,10 +14,10 @@
 									dy="0"
 									dominant-baseline="auto"
 									alignment-baseline="auto"
-									font-family="Montserrat"
+									font-family="Roboto Slab"
 									font-size="31px"
 									fill="#00ADEE"
-									letter-spacing="0"
+									letter-spacing="0.5"
 									font-weight="bold"
 									font-style="normal"
 								>
