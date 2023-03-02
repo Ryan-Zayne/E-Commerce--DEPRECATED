@@ -8,19 +8,21 @@ const useCarousel = (imageArray) => {
 	function previousSlideButton() {
 		if (currentSlide === 0) {
 			setCurrentSlide(maxSlide);
+		} else {
+			setCurrentSlide((prev) => prev - 1);
 		}
-		setCurrentSlide((prev) => prev - 1);
 	}
 
 	function nextSlideButton() {
 		if (currentSlide === maxSlide) {
 			setCurrentSlide(0);
+		} else {
+			setCurrentSlide((prev) => prev + 1);
 		}
-		setCurrentSlide((prev) => prev + 1);
 	}
 
 	useEffect(() => {
-		const infiniteScroll = setInterval(() => nextSlideButton(), 15000);
+		const infiniteScroll = setInterval(() => nextSlideButton(), 10000);
 		return () => clearInterval(infiniteScroll);
 	});
 

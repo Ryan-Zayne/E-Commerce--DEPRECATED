@@ -13,7 +13,7 @@ const Navbar = () => {
 	const navShowHandler = () => setNavShow((prev) => !prev);
 
 	return (
-		<section className="flex flex-wrap md:gap-[2rem]">
+		<header id="Navbar" className="flex flex-wrap md:gap-[2rem]">
 			{/* Logo, Search Bar and Header Icons */}
 			<NavHeader
 				logo={logo}
@@ -27,7 +27,7 @@ const Navbar = () => {
 
 			{/* NAVIGATION LIST */}
 			<NavBarLinks navShowHandler={navShowHandler} navShow={navShow} logo={logo} />
-		</section>
+		</header>
 	);
 };
 

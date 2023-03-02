@@ -28,6 +28,7 @@ const Carousel = () => {
 				key={image}
 				className="absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[1000ms] ease-in"
 				src={image}
+				loading="lazy"
 				alt=""
 				style={{
 					opacity: `${index === currentSlide ? '1' : '0.8'}`,
@@ -38,7 +39,7 @@ const Carousel = () => {
 	});
 
 	return (
-		<section className="relative mx-[0.7rem] mt-[2rem] flex h-[38rem]">
+		<article id="Carousel" className="relative mx-[0.7rem] mt-[2rem] flex h-[38rem]">
 			<button
 				onClick={previousSlideButton}
 				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
@@ -47,19 +48,28 @@ const Carousel = () => {
 			</button>
 
 			<div
-				className={`relative w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.6] contrast-[1] ${
-					isDarkMode ? '[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''
-				}`}
+				id="Images"
+				className={twMerge(`
+					relative w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.6] contrast-[1]
+					${isDarkMode ? '[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''}
+				`)}
 			>
 				{renderedImages}
 			</div>
-			<span className="absolute bottom-[2.5rem] inline-flex w-full items-center justify-center gap-[1.5rem]">
+
+			<span
+				id="Slider dots"
+				className="absolute bottom-[2.5rem] inline-flex w-full items-center justify-center gap-[1.5rem]"
+			>
 				{carouselDots}
 			</span>
 
-			<article className="absolute mt-[5.5rem] flex w-full select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light">
+			<section
+				id="Description"
+				className="absolute mt-[5.5rem] flex w-full select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light"
+			>
 				{/* Heading and Caption */}
-				<div className="w-[28ch]">
+				<article className="w-[28ch]">
 					<h1
 						ref={(elem) => (animatedElements.heading = elem)}
 						className="font-roboto text-[2.5rem] font-[500] text-heading"
@@ -73,18 +83,18 @@ const Carousel = () => {
 						Discover the Latest and most Exquisite Tech Products for Your Home, Office, and On-the-go
 						Needs.
 					</p>
-				</div>
+				</article>
 
 				{/* Shop-Now button */}
-				<div ref={(elem) => (animatedElements.button = elem)}>
+				<span ref={(elem) => (animatedElements.button = elem)}>
 					<Button
 						theme={'secondary'}
 						className="text-[1.6rem] font-[600] hover:[box-shadow:0_0_10px_3px_hsl(43,100%,55%,0.4)] active:scale-[1.04]"
 					>
 						Shop Now
 					</Button>
-				</div>
-			</article>
+				</span>
+			</section>
 
 			<button
 				onClick={nextSlideButton}
@@ -92,7 +102,7 @@ const Carousel = () => {
 			>
 				<RxPaperPlane />
 			</button>
-		</section>
+		</article>
 	);
 };
 
