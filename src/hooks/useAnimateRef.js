@@ -1,18 +1,18 @@
 import { useRef, useEffect } from 'react';
 
-const useAnimateRef = () => {
+const useAnimateRef = ({ classes, timeout }) => {
 	const { current } = useRef({});
 
 	useEffect(() => {
-		current.heading.classList.add('animate-fade-in-down');
-		current.button.classList.add('animate-fade-in-up');
-		current.paragraph.classList.add('animate-fade-in-up-2');
+		classes.forEach((className) => {
+			current[className.target].classList.add(className.animationClass);
+		});
 
 		const fadeAnimation = setTimeout(() => {
-			current.heading.classList.remove('animate-fade-in-down');
-			current.button.classList.remove('animate-fade-in-up');
-			current.paragraph.classList.remove('animate-fade-in-up-2');
-		}, 2000);
+			classes.forEach((className) => {
+				current[className.target].classList.remove(className.animationClass);
+			});
+		}, timeout);
 
 		return () => clearTimeout(fadeAnimation);
 	});

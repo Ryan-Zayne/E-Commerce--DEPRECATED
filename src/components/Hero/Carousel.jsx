@@ -1,15 +1,26 @@
 import { RxPaperPlane } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
 import { Button } from '../common';
-import { useAnimateRef, useCarousel, useColorScheme } from '../../hooks';
+import { useAnimateRef, useCarousel } from '../../hooks';
 import { laptop1, laptop2, phone1, phone2, tablet2, tablet3 } from './assets';
+import { useThemeContext } from '../../context';
+
+const images = [laptop1, phone1, tablet2, phone2, tablet3, laptop2];
+
+const animationObject = {
+	classes: [
+		{ target: 'heading', animationClass: 'animate-fade-in-down' },
+		{ target: 'button', animation: 'animate-fade-in-up' },
+		{ target: 'paragraph', animationClass: 'animate-fade-in-up-2' },
+	],
+	timeout: 2000,
+};
 
 const Carousel = () => {
-	const images = [laptop1, phone1, tablet2, phone2, tablet3, laptop2];
-
-	const { isDarkMode } = useColorScheme();
 	const { currentSlide, setCurrentSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
-	const { current: animatedElements } = useAnimateRef();
+	const { current: animatedElements } = useAnimateRef(animationObject);
+
+	const { isDarkMode } = useThemeContext();
 
 	const carouselDots = images.map((item, index) => (
 		<span

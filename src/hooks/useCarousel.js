@@ -26,7 +26,7 @@ const useCarousel = (imageArray) => {
 		return () => clearInterval(infiniteScroll);
 	});
 
-	return { currentSlide, maxSlide, previousSlideButton, nextSlideButton, setCurrentSlide };
+	return { currentSlide, setCurrentSlide, maxSlide, previousSlideButton, nextSlideButton };
 };
 
 export default useCarousel;

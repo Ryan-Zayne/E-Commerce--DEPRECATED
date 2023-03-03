@@ -1,6 +1,6 @@
 import { BiCartAlt, BiHeart, BiSearchAlt2, BiUser } from 'react-icons/bi';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
-import { Button, DarkModeButton } from '../common';
+import { Button, ThemeSwitcherButton } from '../common';
 import { useMediaQuery } from '../../hooks';
 
 const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
@@ -38,7 +38,7 @@ const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 				<BiHeart className="cursor-pointer active:scale-[1.2]" />
 				<BiUser className="cursor-pointer active:scale-[1.2]" />
 				<BiCartAlt className="cursor-pointer active:scale-[1.2]" />
-				<DarkModeButton />
+				<ThemeSwitcherButton />
 
 				{/* HARMBURGER ICON */}
 				{!isDesktop && (
