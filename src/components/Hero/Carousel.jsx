@@ -3,27 +3,18 @@ import { twMerge } from 'tailwind-merge';
 import { Button } from '../common';
 import { useAnimateRef, useCarousel } from '../../hooks';
 import { laptop1, laptop2, phone1, phone2, tablet2, tablet3 } from './assets';
-import { useDarkMode } from '../../zustand-store/useThemeStore';
+import { useThemeState } from '../../zustand-store/themeStore';
 
 const images = [laptop1, phone1, tablet2, phone2, tablet3, laptop2];
 
-const animationObject = {
-	classes: [
-		{ target: 'heading', animationClass: 'animate-fade-in-down' },
-		{ target: 'button', animationClass: 'animate-fade-in-up' },
-		{ target: 'paragraph', animationClass: 'animate-fade-in-up-2' },
-	],
-	timeout: 2000,
-};
-
 const Carousel = () => {
-	const { currentSlide, setCurrentSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
-	const { current: animatedElements } = useAnimateRef(animationObject);
-	const isDarkMode = useDarkMode();
+	const { currentSlide, resetSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
+	const { current: animatedElements } = useAnimateRef();
+	const { isDarkMode } = useThemeState();
 
 	const carouselDots = images.map((item, index) => (
 		<span
-			onClick={() => setCurrentSlide(index)}
+			onClick={() => resetSlide(index)}
 			key={item}
 			className={twMerge(`
 				inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
@@ -108,7 +99,7 @@ const Carousel = () => {
 				onClick={nextSlideButton}
 				className="absolute right-[0.4rem] top-[45%] z-10 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
 			>
-				<RxPaperPlane className="helo" />
+				<RxPaperPlane />
 			</button>
 		</article>
 	);

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const Button = ({ theme = 'primary', variant = 'regular', size = 'md', className = '', children }) => {
@@ -28,4 +29,4 @@ const Button = ({ theme = 'primary', variant = 'regular', size = 'md', className
 	return <button className={BTN_CLASSES}>{children}</button>;
 };
 
-export default Button;
+export default memo(Button); // To prevent forced re-renders when no props change ;

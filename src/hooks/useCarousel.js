@@ -1,23 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useGeneralActions, useGeneralState } from '../zustand-store/generalStore';
 
 const useCarousel = (imageArray) => {
-	const [currentSlide, setCurrentSlide] = useState(0);
+	const currentSlide = useGeneralState();
+	const { nextSlide, previousSlide, resetSlide } = useGeneralActions();
 
 	const maxSlide = imageArray.length - 1;
 
 	function previousSlideButton() {
 		if (currentSlide === 0) {
-			setCurrentSlide(maxSlide);
+			resetSlide(maxSlide);
 		} else {
-			setCurrentSlide((prev) => prev - 1);
+			previousSlide();
 		}
 	}
 
 	function nextSlideButton() {
 		if (currentSlide === maxSlide) {
-			setCurrentSlide(0);
+			resetSlide(0);
 		} else {
-			setCurrentSlide((prev) => prev + 1);
+			nextSlide();
 		}
 	}
 
@@ -26,7 +28,7 @@ const useCarousel = (imageArray) => {
 		return () => clearInterval(infiniteScroll);
 	});
 
-	return { currentSlide, setCurrentSlide, maxSlide, previousSlideButton, nextSlideButton };
+	return { currentSlide, resetSlide, previousSlideButton, nextSlideButton };
 };
 
 export default useCarousel;
