@@ -1,5 +1,5 @@
 module.exports = {
-	// eslint-disable-next-line global-require,
+	// eslint-disable-next-line global-require,, import/no-extraneous-dependencies
 	plugins: [require('prettier-plugin-tailwindcss')],
 	arrowParens: 'always',
 	bracketSameLine: false,
@@ -9,7 +9,7 @@ module.exports = {
 	htmlWhitespaceSensitivity: 'css',
 	insertPragma: false,
 	jsxSingleQuote: false,
-	printWidth: 110,
+	printWidth: 104,
 	proseWrap: 'preserve',
 	quoteProps: 'as-needed',
 	semi: true,

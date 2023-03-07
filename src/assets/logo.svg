@@ -1,3 +1,4 @@
+
 <svg
 						version="1.1"
 						xmlns="http://www.w3.org/2000/svg"
@@ -12,14 +13,14 @@
 							>
 								<text
 									dy="0"
+
 									dominant-baseline="auto"
 									alignment-baseline="auto"
-									font-family="Roboto Slab"
+									font-family="Trebuchet Ms"
 									font-size="31px"
 									fill="#00ADEE"
 									letter-spacing="0.5"
-									font-weight="bold"
-									font-style="normal"
+									font-weight="600"
 								>
 									DigitalGenie
 								</text>

@@ -3,14 +3,14 @@ import { twMerge } from 'tailwind-merge';
 import { Button } from '../common';
 import { useAnimateRef, useCarousel } from '../../hooks';
 import { laptop1, laptop2, phone1, phone2, tablet2, tablet3 } from './assets';
-import { useThemeContext } from '../../context';
+import { useDarkMode } from '../../zustand-store/useThemeStore';
 
 const images = [laptop1, phone1, tablet2, phone2, tablet3, laptop2];
 
 const animationObject = {
 	classes: [
 		{ target: 'heading', animationClass: 'animate-fade-in-down' },
-		{ target: 'button', animation: 'animate-fade-in-up' },
+		{ target: 'button', animationClass: 'animate-fade-in-up' },
 		{ target: 'paragraph', animationClass: 'animate-fade-in-up-2' },
 	],
 	timeout: 2000,
@@ -19,8 +19,7 @@ const animationObject = {
 const Carousel = () => {
 	const { currentSlide, setCurrentSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
 	const { current: animatedElements } = useAnimateRef(animationObject);
-
-	const { isDarkMode } = useThemeContext();
+	const isDarkMode = useDarkMode();
 
 	const carouselDots = images.map((item, index) => (
 		<span
@@ -37,14 +36,12 @@ const Carousel = () => {
 		return (
 			<img
 				key={image}
-				className="absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[1000ms] ease-in"
+				className={`
+					absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[1000ms] ease-in
+					${index === currentSlide ? 'translate-x-[0] opacity-[1]' : 'translate-x-[100%] opacity-[0.8] '}
+				`}
 				src={image}
-				loading="lazy"
 				alt=""
-				style={{
-					opacity: `${index === currentSlide ? '1' : '0.8'}`,
-					transform: `translateX(${index === currentSlide ? '0' : '100%'})`,
-				}}
 			/>
 		);
 	});
@@ -83,16 +80,16 @@ const Carousel = () => {
 				<article className="w-[28ch]">
 					<h1
 						ref={(elem) => (animatedElements.heading = elem)}
-						className="font-roboto text-[2.5rem] font-[500] text-heading"
+						className="font-roboto text-[clamp(2rem,_3vw+1rem,_2.5rem)] font-[600] text-heading"
 					>
 						Explore the Future of Technology
 					</h1>
 					<p
 						ref={(elem) => (animatedElements.paragraph = elem)}
-						className="relative z-20 [margin-block:1.8rem_3rem]"
+						className="relative z-20 w-[30ch] text-[clamp(1.3rem,_1vw+1rem,_1.6rem)] [margin-block:1.8rem_3rem]"
 					>
-						Discover the Latest and most Exquisite Tech Products for Your Home, Office, and On-the-go
-						Needs.
+						Discover the Latest and most Exquisite Tech Products for Your Home, Office, and
+						On-the-go Needs.
 					</p>
 				</article>
 
@@ -100,7 +97,7 @@ const Carousel = () => {
 				<span ref={(elem) => (animatedElements.button = elem)}>
 					<Button
 						theme={'secondary'}
-						className="text-[1.6rem] font-[600] hover:[box-shadow:0_0_10px_3px_hsl(43,100%,55%,0.4)] active:scale-[1.04]"
+						className="text-[clamp(1.3rem,_1vw+1rem,_1.6rem)] font-[600] hover:[box-shadow:0_0_10px_3px_hsl(43,100%,55%,0.4)] active:scale-[1.04] max-sm:p-[1rem_2.8rem]"
 					>
 						Shop Now
 					</Button>
@@ -111,7 +108,7 @@ const Carousel = () => {
 				onClick={nextSlideButton}
 				className="absolute right-[0.4rem] top-[45%] z-10 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
 			>
-				<RxPaperPlane />
+				<RxPaperPlane className="helo" />
 			</button>
 		</article>
 	);

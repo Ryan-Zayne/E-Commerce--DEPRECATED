@@ -16,7 +16,7 @@ const NavBarLinks = ({ navShow, navShowHandler, logo }) => {
 		`),
 
 		OVERLAY_CLASSES: twMerge(`
-				fixed z-[80] w-0 bg-[hsl(0,0%,0%,0.55)] [inset:0_0_0_auto]
+				fixed z-[80] w-0 bg-[hsl(0,0%,0%,0.6)] [inset:0_0_0_auto]
 				${navShow ? 'w-screen' : ''}
 		`),
 	};

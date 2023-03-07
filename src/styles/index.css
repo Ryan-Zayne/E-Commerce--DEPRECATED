@@ -76,11 +76,11 @@
 	}
 }
 
-/* @layer components {
+@layer components {
 
 	.theme-transition,
 	.theme-transition * {
-		transition: color 300ms linear, background-color 300ms linear;
+		transition: background-color 200ms linear;
 	}
 
-} */
+}

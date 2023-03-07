@@ -1,24 +1,29 @@
 import { useEffect } from 'react';
 import { BsFillMoonStarsFill } from 'react-icons/bs';
 import { FaSun } from 'react-icons/fa';
-import { useThemeContext } from '../../context';
+import { useTheme, useDarkMode, useThemeActions } from '../../zustand-store/useThemeStore';
 
-const ThemeSwitcherButton = ({ display }) => {
-	const { isDarkMode, theme, setTheme } = useThemeContext();
-
-	function themeSwitcher() {
-		const newTheme = isDarkMode ? 'light' : 'dark';
-		setTheme(newTheme);
-	}
+const ThemeSwitchButton = ({ display }) => {
+	const theme = useTheme();
+	const isDarkMode = useDarkMode();
+	const { switchTheme, setIsDarkMode } = useThemeActions();
 
 	useEffect(() => {
 		document.documentElement.setAttribute('data-theme', theme);
 	}, [theme]);
 
+	useEffect(() => {
+		if (theme === 'dark') {
+			setIsDarkMode(true);
+		} else {
+			setIsDarkMode(false);
+		}
+	}, [setIsDarkMode, theme]);
+
 	return (
 		<button
 			className={`rounded-[5rem] bg-[hsl(229,28%,15%)] max-md:scale-[0.8] ${display}`}
-			onClick={themeSwitcher}
+			onClick={switchTheme}
 		>
 			<div className="relative flex h-[2.2rem] w-[4.3rem] items-center justify-between gap-[0.6rem] [padding-inline:0.6rem_0.5rem] [padding-block:0.3rem]">
 				<FaSun color="var(--text-header)" fontSize={'1.2rem'} />
@@ -34,4 +39,4 @@ const ThemeSwitcherButton = ({ display }) => {
 	);
 };
 
-export default ThemeSwitcherButton;
+export default ThemeSwitchButton;
