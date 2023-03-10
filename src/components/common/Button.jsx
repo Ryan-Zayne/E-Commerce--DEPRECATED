@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-const Button = ({ theme = 'primary', variant = 'regular', size = 'md', className = '', children }) => {
+const Button = ({ theme = 'primary', variant = 'regular', size = 'md', className, children }) => {
 	const semanticVariants = {
 		regular: 'rounded-[0.5rem]',
 		input: 'rounded-[0_2.5rem_2.5rem_0]',
@@ -23,7 +23,7 @@ const Button = ({ theme = 'primary', variant = 'regular', size = 'md', className
 				${semanticVariants[variant] ?? ''}
 				${semanticThemes[theme] ?? ''}
 				${semanticSizes[size] ?? ''}
-				${className}
+				${className ?? ''}
 	`);
 
 	return <button className={BTN_CLASSES}>{children}</button>;

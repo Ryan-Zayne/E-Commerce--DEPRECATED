@@ -1,11 +1,15 @@
 import { BiCartAlt, BiHeart, BiSearchAlt2, BiUser } from 'react-icons/bi';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
+import { twMerge } from 'tailwind-merge';
 import { useMediaQuery } from '../../hooks';
+import { createGlobalStore, useGlobalActions } from '../../zustand-store/globalStore';
 import SearchForm from './SearchForm';
 import ThemeSwitchButton from './ThemeSwitchButton';
 
-const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
+const NavHeader = ({ logo }) => {
 	const { isMobile, isTablet, isDesktop } = useMediaQuery();
+	const { searchShowHandler, navShowHandler } = useGlobalActions();
+	const isNavShow = createGlobalStore((state) => state.isNavShow);
 
 	return (
 		<article className="top-row flex w-full select-none justify-between gap-[1rem] px-[1rem]">
@@ -32,13 +36,13 @@ const NavHeader = ({ logo, searchShowHandler, navShow, navShowHandler }) => {
 				{!isDesktop && (
 					<button
 						id="Hamburger"
-						className={`
-						z-[120] w-[2.6rem]
-						${navShow ? 'md:animate-[bounce_1.5s_ease_infinite]' : ''}
-						`}
+						className={twMerge(`
+							z-[120] w-[2.6rem]
+							${isNavShow ? 'md:animate-[bounce_1.5s_ease_infinite]' : ''}
+						`)}
 						onClick={navShowHandler}
 					>
-						{navShow ? <RiCloseFill className="text-[2.6rem]" /> : <RiMenu3Fill />}
+						{isNavShow ? <RiCloseFill className="text-[2.6rem]" /> : <RiMenu3Fill />}
 					</button>
 				)}
 			</div>

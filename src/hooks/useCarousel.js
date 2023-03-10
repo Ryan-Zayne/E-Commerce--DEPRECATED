@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { useGeneralActions, useGeneralState } from '../zustand-store/generalStore';
+import { useGlobalActions, createGlobalStore } from '../zustand-store/globalStore';
 
 const useCarousel = (imageArray) => {
-	const currentSlide = useGeneralState();
-	const { nextSlide, previousSlide, resetSlide } = useGeneralActions();
+	const currentSlide = createGlobalStore((state) => state.currentSlide);
+
+	const { nextSlide, previousSlide, resetSlide } = useGlobalActions();
 
 	const maxSlide = imageArray.length - 1;
 

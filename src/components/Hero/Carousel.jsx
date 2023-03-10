@@ -1,16 +1,16 @@
 import { RxPaperPlane } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
-import { Button } from '../common';
 import { useAnimateRef, useCarousel } from '../../hooks';
+import { createThemeStore } from '../../zustand-store/themeStore';
+import { Button } from '../common';
 import { laptop1, laptop2, phone1, phone2, tablet2, tablet3 } from './assets';
-import { useThemeState } from '../../zustand-store/themeStore';
 
 const images = [laptop1, phone1, tablet2, phone2, tablet3, laptop2];
 
 const Carousel = () => {
 	const { currentSlide, resetSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
 	const { current: animatedElements } = useAnimateRef();
-	const { isDarkMode } = useThemeState();
+	const isDarkMode = createThemeStore((state) => state.isDarkMode);
 
 	const carouselDots = images.map((item, index) => (
 		<span
@@ -27,10 +27,10 @@ const Carousel = () => {
 		return (
 			<img
 				key={image}
-				className={`
+				className={twMerge(`
 					absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[1000ms] ease-in
 					${index === currentSlide ? 'translate-x-[0] opacity-[1]' : 'translate-x-[100%] opacity-[0.8] '}
-				`}
+				`)}
 				src={image}
 				alt=""
 			/>
@@ -88,7 +88,7 @@ const Carousel = () => {
 				<span ref={(elem) => (animatedElements.button = elem)}>
 					<Button
 						theme={'secondary'}
-						className="text-[clamp(1.3rem,_1vw+1rem,_1.6rem)] font-[600] hover:[box-shadow:0_0_10px_3px_hsl(43,100%,55%,0.4)] active:scale-[1.04] max-sm:p-[1rem_2.8rem]"
+						className="text-[clamp(1.3rem,_1vw+1rem,_1.6rem)] font-[600] transition-shadow duration-[400ms] hover:[box-shadow:0_10px_20px_hsl(43,100%,55%,0.4)] active:scale-[1.04] max-sm:p-[1rem_2.8rem]"
 					>
 						Shop Now
 					</Button>

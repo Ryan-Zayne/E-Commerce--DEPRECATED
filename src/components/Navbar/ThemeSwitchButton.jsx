@@ -1,15 +1,20 @@
-import { useEffect } from 'react';
+import { useLayoutEffect, useEffect } from 'react';
 import { BsFillMoonStarsFill } from 'react-icons/bs';
 import { FaSun } from 'react-icons/fa';
-import { useThemeState, useThemeActions } from '../../zustand-store/themeStore';
+import { useThemeActions, createThemeStore } from '../../zustand-store/themeStore';
 
 const ThemeSwitchButton = ({ display }) => {
-	const { theme, isDarkMode } = useThemeState();
 	const { switchTheme, toggleDarkMode } = useThemeActions();
+	const theme = createThemeStore((state) => state.theme);
+	const isDarkMode = createThemeStore((state) => state.isDarkMode);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		document.documentElement.setAttribute('data-theme', theme);
 	}, [theme]);
+
+	useEffect(() => {
+		document.documentElement.classList.add('theme-transition');
+	}, []);
 
 	return (
 		<button
