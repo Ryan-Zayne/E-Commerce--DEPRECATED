@@ -2,14 +2,14 @@ import { BiCartAlt, BiHeart, BiSearchAlt2, BiUser } from 'react-icons/bi';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
 import { twMerge } from 'tailwind-merge';
 import { useMediaQuery } from '../../hooks';
-import { createGlobalStore, useGlobalActions } from '../../zustand-store/globalStore';
+import { useGlobalStore, useGlobalActions } from '../../zustand-store/globalStore';
 import SearchForm from './SearchForm';
 import ThemeSwitchButton from './ThemeSwitchButton';
 
 const NavHeader = ({ logo }) => {
 	const { isMobile, isTablet, isDesktop } = useMediaQuery();
 	const { searchShowHandler, navShowHandler } = useGlobalActions();
-	const isNavShow = createGlobalStore((state) => state.isNavShow);
+	const isNavShow = useGlobalStore((state) => state.isNavShow);
 
 	return (
 		<article className="top-row flex w-full select-none justify-between gap-[1rem] px-[1rem]">

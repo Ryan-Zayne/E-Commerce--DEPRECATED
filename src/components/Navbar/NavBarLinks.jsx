@@ -1,10 +1,10 @@
 import { twMerge } from 'tailwind-merge';
 import { useMediaQuery } from '../../hooks';
-import { createGlobalStore, useGlobalActions } from '../../zustand-store/globalStore';
+import { useGlobalStore, useGlobalActions } from '../../zustand-store/globalStore';
 
 const NavBarLinks = ({ logo }) => {
 	const { isDesktop } = useMediaQuery();
-	const isNavShow = createGlobalStore((state) => state.isNavShow);
+	const isNavShow = useGlobalStore((state) => state.isNavShow);
 
 	const { navShowHandler } = useGlobalActions();
 

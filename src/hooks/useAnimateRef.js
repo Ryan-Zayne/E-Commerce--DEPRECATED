@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { createGlobalStore } from '../zustand-store/globalStore';
+import { useGlobalStore } from '../zustand-store/globalStore';
 
 const classes = [
 	{ target: 'heading', animationClass: 'animate-fade-in-down' },
@@ -9,11 +9,12 @@ const classes = [
 
 const useAnimateRef = () => {
 	const { current } = useRef({});
-	const currentSlide = createGlobalStore((state) => state.currentSlide);
+	const currentSlide = useGlobalStore((state) => state.currentSlide);
 
 	useEffect(() => {
 		classes.forEach((className) => {
 			current[className.target]?.classList.add(className.animationClass);
+
 			console.assert(
 				current[className.target],
 				new Error(`Target Element: ${className.target} does not exist!`)

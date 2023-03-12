@@ -1,16 +1,16 @@
 import { RxPaperPlane } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
 import { useAnimateRef, useCarousel } from '../../hooks';
-import { createThemeStore } from '../../zustand-store/themeStore';
+import { useThemeStore } from '../../zustand-store/themeStore';
 import { Button } from '../common';
-import { laptop1, laptop2, phone1, phone2, tablet2, tablet3 } from './assets';
+import * as assets from './images';
 
-const images = [laptop1, phone1, tablet2, phone2, tablet3, laptop2];
+const images = Object.values(assets);
 
 const Carousel = () => {
 	const { currentSlide, resetSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
 	const { current: animatedElements } = useAnimateRef();
-	const isDarkMode = createThemeStore((state) => state.isDarkMode);
+	const isDarkMode = useThemeStore((state) => state.isDarkMode);
 
 	const carouselDots = images.map((item, index) => (
 		<span
@@ -23,7 +23,7 @@ const Carousel = () => {
 		/>
 	));
 
-	const renderedImages = images.map((image, index) => {
+	const carouselSlides = images.map((image, index) => {
 		return (
 			<img
 				key={image}
@@ -53,7 +53,7 @@ const Carousel = () => {
 					${isDarkMode ? '[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''}
 				`)}
 			>
-				{renderedImages}
+				{carouselSlides}
 			</div>
 
 			<span

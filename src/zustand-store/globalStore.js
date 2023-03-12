@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 const storeObject = (set) => ({
 	isNavShow: false,
@@ -13,6 +14,6 @@ const storeObject = (set) => ({
 	},
 });
 
-export const createGlobalStore = create(storeObject);
+export const useGlobalStore = create(devtools(storeObject));
 
-export const useGlobalActions = () => createGlobalStore((state) => state.actions);
+export const useGlobalActions = () => useGlobalStore((state) => state.actions);

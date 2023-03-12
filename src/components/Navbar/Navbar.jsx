@@ -1,14 +1,14 @@
 import { twMerge } from 'tailwind-merge';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/brand/logo.svg';
 import { useMediaQuery } from '../../hooks';
-import { createGlobalStore } from '../../zustand-store/globalStore';
+import { useGlobalStore } from '../../zustand-store/globalStore';
 
 import NavBarLinks from './NavBarLinks';
 import NavHeader from './NavHeader';
 import SearchForm from './SearchForm';
 
 const Navbar = () => {
-	const isSearchShow = createGlobalStore((state) => state.isSearchShow);
+	const isSearchShow = useGlobalStore((state) => state.isSearchShow);
 	const { isMobile } = useMediaQuery();
 
 	const FORM_CLASSES = twMerge(`

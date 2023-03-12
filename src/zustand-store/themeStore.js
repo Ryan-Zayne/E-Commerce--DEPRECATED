@@ -19,12 +19,12 @@ const storeObject = (set, get) => ({
 });
 
 // Store Creation
-export const createThemeStore = create(
+export const useThemeStore = create(
 	persist(storeObject, {
-		name: 'scheme',
+		name: 'colorScheme',
 		partialize: ({ actions, ...state }) => state,
 	})
 );
 
 // Actions hook
-export const useThemeActions = () => createThemeStore((state) => state.actions);
+export const useThemeActions = () => useThemeStore((state) => state.actions);
