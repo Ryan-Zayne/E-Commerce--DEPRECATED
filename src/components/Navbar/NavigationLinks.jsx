@@ -2,10 +2,9 @@ import { twMerge } from 'tailwind-merge';
 import { useMediaQuery } from '../../hooks';
 import { useGlobalStore, useGlobalActions } from '../../zustand-store/globalStore';
 
-const NavBarLinks = ({ logo }) => {
+const NavigationLinks = ({ logo }) => {
 	const { isDesktop } = useMediaQuery();
 	const isNavShow = useGlobalStore((state) => state.isNavShow);
-
 	const { navShowHandler } = useGlobalActions();
 
 	const styles = {
@@ -58,4 +57,4 @@ const NavBarLinks = ({ logo }) => {
 	);
 };
 
-export default NavBarLinks;
+export default NavigationLinks;

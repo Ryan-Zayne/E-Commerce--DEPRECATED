@@ -9,6 +9,7 @@
 		"plugin:react/recommended",
 		"plugin:react/jsx-runtime",
 		"plugin:tailwindcss/recommended",
+		"plugin:@tanstack/eslint-plugin-query/recommended",
 		"prettier"
 	],
 	"overrides": [],
@@ -26,7 +27,7 @@
 		"no-return-assign": ["error", "except-parens"],
 		"no-use-before-define": ["error", { "functions": false }],
 		"no-multiple-empty-lines": ["warn", { "max": 3 }],
-		"object-curly-newline": ["warn", { "multiline": true }],
+		"object-curly-newline": "off",
 		"comma-dangle": "off",
 		"arrow-body-style": "off",
 		"no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
@@ -38,7 +39,7 @@
 			"error",
 			{ "devDependencies": true, "optionalDependencies": false, "peerDependencies": false }
 		],
-		"import/prefer-default-export": "warn",
+		"import/prefer-default-export": "off",
 		"react/self-closing-comp": ["error", { "component": true }],
 		"react/jsx-curly-brace-presence": [
 			"error",

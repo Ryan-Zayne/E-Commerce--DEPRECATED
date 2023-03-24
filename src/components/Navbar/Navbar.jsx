@@ -1,10 +1,9 @@
 import { twMerge } from 'tailwind-merge';
-import logo from '../../assets/brand/logo.svg';
 import { useMediaQuery } from '../../hooks';
 import { useGlobalStore } from '../../zustand-store/globalStore';
-
-import NavBarLinks from './NavBarLinks';
+import logo from '../../assets/brand/logo.svg';
 import NavHeader from './NavHeader';
+import NavigationLinks from './NavigationLinks';
 import SearchForm from './SearchForm';
 
 const Navbar = () => {
@@ -26,7 +25,7 @@ const Navbar = () => {
 			{isMobile && <SearchForm className={FORM_CLASSES} />}
 
 			{/* NAVIGATION LIST */}
-			<NavBarLinks logo={logo} />
+			<NavigationLinks logo={logo} />
 		</header>
 	);
 };

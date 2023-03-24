@@ -1,38 +1,45 @@
 import { useRef, useEffect } from 'react';
 import { useGlobalStore } from '../zustand-store/globalStore';
 
-const classes = [
+const elements = [
 	{ target: 'heading', animationClass: 'animate-fade-in-down' },
 	{ target: 'button', animationClass: 'animate-fade-in-up' },
 	{ target: 'paragraph', animationClass: 'animate-fade-in-up-2' },
 ];
 
 const useAnimateRef = () => {
-	const { current } = useRef({});
+	const elementRef = useRef({});
 	const currentSlide = useGlobalStore((state) => state.currentSlide);
 
 	useEffect(() => {
-		classes.forEach((className) => {
-			current[className.target]?.classList.add(className.animationClass);
+		elements.forEach((elem) => {
+			elementRef.current[elem.target]?.classList.add(elem.animationClass);
 
+			// Error Handling
 			console.assert(
-				current[className.target],
-				new Error(`Target Element: ${className.target} does not exist!`)
+				elementRef.current[elem.target],
+				new Error(`Target Element: ${elem.target} does not exist!`)
 			);
 		});
-	}, [current, currentSlide]);
 
-	useEffect(() => {
+		// Animation Timer
 		const fadeAnimation = setTimeout(() => {
-			classes.forEach((className) => {
-				current[className.target]?.classList.remove(className.animationClass);
+			elements.forEach((elem) => {
+				elementRef.current[elem.target]?.classList.remove(elem.animationClass);
 			});
 		}, 2000);
 
+		// Cleanup
 		return () => clearTimeout(fadeAnimation);
-	}, [current, currentSlide]);
+	}, [currentSlide]);
 
-	return { current };
+	return { animatedElements: elementRef.current };
 };
 
 export default useAnimateRef;
+
+// Imitation setState updater function for react useState
+// const updateCurrent = (updater) => {
+// 	elementRef = updater(elementRef.current);
+// };
+// updateCurrent((prev) => ({ ...prev }));

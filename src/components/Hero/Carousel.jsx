@@ -9,7 +9,7 @@ const images = Object.values(assets);
 
 const Carousel = () => {
 	const { currentSlide, resetSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
-	const { current: animatedElements } = useAnimateRef();
+	const { animatedElements } = useAnimateRef();
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
 
 	const carouselDots = images.map((item, index) => (
@@ -38,7 +38,7 @@ const Carousel = () => {
 	});
 
 	return (
-		<article id="Carousel" className="relative mx-[0.7rem] mt-[2rem] flex h-[38rem]">
+		<article id="Carousel" className="relative mx-[3rem] mt-[2rem] flex h-[38rem]">
 			<button
 				onClick={previousSlideButton}
 				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
