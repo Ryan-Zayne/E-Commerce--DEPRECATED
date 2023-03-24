@@ -6,9 +6,7 @@ const Products = () => {
 	return (
 		<section id="Products" className="mt-[3rem] flex flex-col gap-[4rem]">
 			<HotSalesProducts />
-
 			<RecentProducts />
-
 			<SimilarProducts />
 		</section>
 	);

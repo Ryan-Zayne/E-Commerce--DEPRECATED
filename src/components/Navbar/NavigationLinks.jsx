@@ -33,7 +33,7 @@ const NavigationLinks = ({ logo }) => {
 				</div>
 			)}
 
-			{/* NAVBAR LINKS */}
+			{/* NAVIGATION LINKS */}
 			<nav className="flex w-[100%] items-center justify-between font-[500] lg:px-[2rem] ">
 				{isDesktop && <button>Shop By Category</button>}
 
