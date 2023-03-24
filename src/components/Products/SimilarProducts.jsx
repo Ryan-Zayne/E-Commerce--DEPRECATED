@@ -1,5 +1,5 @@
 import { useFetch } from '../../hooks';
-import ProductCard from './ProductCard';
+import ProductsCard from './ProductsCard';
 
 function SimilarProducts() {
 	const products = useFetch({
@@ -20,7 +20,7 @@ function SimilarProducts() {
 	}
 
 	const renderedProducts1 = products.data.products.map((product) => (
-		<ProductCard
+		<ProductsCard
 			key={product.images[0]}
 			image={product.images[0]}
 			title={product.title}
@@ -30,7 +30,7 @@ function SimilarProducts() {
 	));
 
 	const renderedProducts2 = products.data.products.map((product) => (
-		<ProductCard
+		<ProductsCard
 			key={product.images[1]}
 			image={product.images[1]}
 			title={product.title}

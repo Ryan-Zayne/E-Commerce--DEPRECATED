@@ -1,13 +1,16 @@
 import { BiCartAlt, BiHeart, BiSearchAlt2, BiUser } from 'react-icons/bi';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
 import { twMerge } from 'tailwind-merge';
-import { useMediaQuery } from '../../hooks';
-import { useGlobalStore, useGlobalActions } from '../../zustand-store/globalStore';
+import { useDesktopQuery, useMobileQuery, useTabletQuery } from '../../hooks';
+import { useGlobalActions, useGlobalStore } from '../../zustand-store/globalStore';
 import SearchForm from './SearchForm';
 import ThemeSwitchButton from './ThemeSwitchButton';
 
 const NavHeader = ({ logo }) => {
-	const { isMobile, isTablet, isDesktop } = useMediaQuery();
+	const isMobile = useMobileQuery();
+	const isTablet = useTabletQuery();
+	const isDesktop = useDesktopQuery();
+
 	const { searchShowHandler, navShowHandler } = useGlobalActions();
 	const isNavShow = useGlobalStore((state) => state.isNavShow);
 

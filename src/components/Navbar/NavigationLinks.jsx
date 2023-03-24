@@ -1,9 +1,12 @@
+import { BsMenuButton } from 'react-icons/bs';
 import { twMerge } from 'tailwind-merge';
-import { useMediaQuery } from '../../hooks';
-import { useGlobalStore, useGlobalActions } from '../../zustand-store/globalStore';
+import { useDesktopQuery } from '../../hooks';
+
+import { useGlobalActions, useGlobalStore } from '../../zustand-store/globalStore';
 
 const NavigationLinks = ({ logo }) => {
-	const { isDesktop } = useMediaQuery();
+	const isDesktop = useDesktopQuery();
+
 	const isNavShow = useGlobalStore((state) => state.isNavShow);
 	const { navShowHandler } = useGlobalActions();
 
@@ -35,7 +38,21 @@ const NavigationLinks = ({ logo }) => {
 
 			{/* NAVIGATION LINKS */}
 			<nav className="flex w-[100%] items-center justify-between font-[500] lg:px-[2rem] ">
-				{isDesktop && <button>Shop By Category</button>}
+				{isDesktop && (
+					<div id="Categories" className="relative z-50">
+						<button className="flex w-[28rem] items-center gap-[1rem] rounded-[0.5rem] bg-heading p-[1rem_1.5rem] font-[500] text-body">
+							<BsMenuButton />
+							Shop By Category
+						</button>
+						<ul className="absolute min-h-[41.3rem] w-full bg-body">
+							<li>All Products</li>
+							<li>Smartphones</li>
+							<li>Laptops</li>
+							<li>{"Men's Watches"}</li>
+							<li>{"Women's Watches"}</li>
+						</ul>
+					</div>
+				)}
 
 				<ul className={styles.NAVLIST_CLASSES}>
 					{!isDesktop && (
