@@ -17,7 +17,7 @@ const Navbar = () => {
 	`);
 
 	return (
-		<header id="Navbar" className="flex flex-wrap justify-center py-[1rem] md:gap-[2rem]">
+		<header id="Navbar" className="flex flex-wrap justify-center pt-[1rem] md:gap-[2rem]">
 			{/* Logo, Search Bar and Header Icons */}
 			<NavHeader logo={logo} />
 

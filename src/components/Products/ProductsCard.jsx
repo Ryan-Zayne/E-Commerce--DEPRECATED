@@ -55,7 +55,9 @@ const ProductCard = ({ image, title, price, description }) => {
 						variant={'cart'}
 						theme={'secondary'}
 						text={'Add to Cart'}
-						className={'mt-[1rem] p-[0.8rem_1.4rem] text-[1.2rem] font-[500] active:scale-[1.05]'}
+						className={
+							'mt-[1rem] p-[0.8rem_1.3rem] text-[1.3rem] font-[500] active:translate-y-[0.15rem]'
+						}
 					/>
 				</div>
 			</Card.Footer>

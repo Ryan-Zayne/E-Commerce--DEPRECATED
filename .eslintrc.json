@@ -45,6 +45,7 @@
 			"error",
 			{ "props": "ignore", "children": "ignore", "propElementValues": "always" }
 		],
+		// "react/no-unescaped-entities": "off",
 		"react/button-has-type": "off",
 		"react/function-component-definition": "off",
 		"react-hooks/exhaustive-deps": "warn",

@@ -10,7 +10,7 @@ const storeObject = (set) => ({
 		searchShowHandler: () => set((state) => ({ isSearchShow: !state.isSearchShow })),
 		nextSlide: () => set((state) => ({ currentSlide: state.currentSlide + 1 })),
 		previousSlide: () => set((state) => ({ currentSlide: state.currentSlide - 1 })),
-		resetSlide: (resetValue) => set({ currentSlide: resetValue }),
+		goToSlide: (resetValue) => set({ currentSlide: resetValue }),
 	},
 });
 

@@ -5,7 +5,7 @@ const Button = ({ theme = 'primary', variant = 'regular', size = 'md', className
 	const semanticVariants = {
 		regular: 'rounded-[0.5rem]',
 		input: 'rounded-[0_2.5rem_2.5rem_0]',
-		cart: 'rounded-[4rem]',
+		cart: 'rounded-[0.8rem]',
 	};
 
 	const semanticThemes = {

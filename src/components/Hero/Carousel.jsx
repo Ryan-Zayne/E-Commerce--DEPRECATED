@@ -8,17 +8,21 @@ import * as assets from './images';
 const images = Object.values(assets);
 
 const Carousel = () => {
-	const { currentSlide, resetSlide, nextSlideButton, previousSlideButton } = useCarousel(images);
+	const { currentSlide, goToSlide, nextSlideButton, previousSlideButton } = useCarousel({
+		numberOfSlides: images.length,
+		autoPlay: true,
+		interval: 8000,
+	});
 	const { animatedElements } = useAnimateRef();
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
 
 	const carouselDots = images.map((item, index) => (
 		<span
-			onClick={() => resetSlide(index)}
+			onClick={() => goToSlide(index)}
 			key={item}
 			className={twMerge(`
-				inline-block aspect-square w-[1rem] cursor-pointer rounded-[50%] bg-carousel-btn hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
-				${index === currentSlide ? 'w-[1.2rem] bg-carousel-dot' : ''}
+				inline-block h-[0.8rem] w-[0.8rem] shrink-0 cursor-pointer rounded-[50%] bg-carousel-btn transition-[width] duration-[300ms] [transition-timing-function:ease] hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
+				${index === currentSlide ? 'w-[3.5rem] rounded-[1rem] bg-carousel-dot' : ''}
 			`)}
 		/>
 	));
@@ -28,8 +32,8 @@ const Carousel = () => {
 			<img
 				key={image}
 				className={twMerge(`
-					absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[1000ms] ease-in
-					${index === currentSlide ? 'translate-x-[0] opacity-[1]' : 'translate-x-[100%] opacity-[0.8] '}
+					absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[2000ms] [transition-timing-function:ease]
+					${index === currentSlide ? 'opacity-1 translate-x-[0]' : 'translate-x-[-100%] opacity-[0.6]'}
 				`)}
 				src={image}
 				alt=""
@@ -38,23 +42,23 @@ const Carousel = () => {
 	});
 
 	return (
-		<article id="Carousel" className="relative mx-[1rem] mt-[2rem] flex h-[38rem]">
+		<article id="Carousel" className="relative flex min-h-[41.4rem] max-sm:mx-[2rem]">
 			<button
 				onClick={previousSlideButton}
-				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
+				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1] md:left-[0.9rem]"
 			>
 				<RxPaperPlane />
 			</button>
 
-			<div
+			<ul
 				id="Images"
 				className={twMerge(`
-					relative w-full overflow-hidden rounded-[5px] bg-primary brightness-[0.6] contrast-[1]
+					relative w-full overflow-hidden rounded-[5px] brightness-[0.6] contrast-[1] md:rounded-none
 					${isDarkMode ? '[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''}
 				`)}
 			>
 				{carouselSlides}
-			</div>
+			</ul>
 
 			<span
 				id="Slider dots"
@@ -65,7 +69,7 @@ const Carousel = () => {
 
 			<section
 				id="Description"
-				className="absolute mt-[5.5rem] flex w-full select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light"
+				className="absolute mt-[5.5rem] flex w-full select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light md:pl-[5rem]"
 			>
 				{/* Heading and Caption */}
 				<article className="w-[28ch]">
@@ -97,7 +101,7 @@ const Carousel = () => {
 
 			<button
 				onClick={nextSlideButton}
-				className="absolute right-[0.4rem] top-[45%] z-10 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1]"
+				className="absolute right-[0.4rem] top-[45%] z-10 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1] md:right-[0.8rem]"
 			>
 				<RxPaperPlane />
 			</button>

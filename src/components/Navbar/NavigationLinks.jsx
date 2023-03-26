@@ -1,4 +1,4 @@
-import { BsMenuButton } from 'react-icons/bs';
+import { BsMenuButtonFill } from 'react-icons/bs';
 import { twMerge } from 'tailwind-merge';
 import { useDesktopQuery } from '../../hooks';
 
@@ -6,7 +6,6 @@ import { useGlobalActions, useGlobalStore } from '../../zustand-store/globalStor
 
 const NavigationLinks = ({ logo }) => {
 	const isDesktop = useDesktopQuery();
-
 	const isNavShow = useGlobalStore((state) => state.isNavShow);
 	const { navShowHandler } = useGlobalActions();
 
@@ -37,19 +36,29 @@ const NavigationLinks = ({ logo }) => {
 			)}
 
 			{/* NAVIGATION LINKS */}
-			<nav className="flex w-[100%] items-center justify-between font-[500] lg:px-[2rem] ">
+			<nav className="flex w-[100%] items-center justify-between font-[500] lg:pr-[2rem] ">
 				{isDesktop && (
 					<div id="Categories" className="relative z-50">
-						<button className="flex w-[28rem] items-center gap-[1rem] rounded-[0.5rem] bg-heading p-[1rem_1.5rem] font-[500] text-body">
-							<BsMenuButton />
+						<button className="flex w-[28rem] items-center gap-[1rem] rounded-[0.5rem_0.5rem_0_0] bg-heading p-[1rem_1.5rem] font-[500] text-body">
+							<BsMenuButtonFill />
 							Shop By Category
 						</button>
-						<ul className="absolute min-h-[41.3rem] w-full bg-body">
-							<li>All Products</li>
-							<li>Smartphones</li>
-							<li>Laptops</li>
-							<li>{"Men's Watches"}</li>
-							<li>{"Women's Watches"}</li>
+						<ul className="absolute min-h-[41.5rem] w-full bg-body px-[2rem] pt-[5rem] font-[400] [box-shadow:0_0_3px_0.1px_var(--carousel-dot)]">
+							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								All Products
+							</li>
+							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								Smartphones
+							</li>
+							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								Laptops
+							</li>
+							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								Men{`'`}s Watches
+							</li>
+							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								Women{`'`}s Watches
+							</li>
 						</ul>
 					</div>
 				)}
