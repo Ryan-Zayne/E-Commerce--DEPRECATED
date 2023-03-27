@@ -6,6 +6,7 @@
 	:root {
 		--text-header: hsl(43, 100%, 55%);
 		--text-light: hsl(0, 17%, 93%);
+		--text-body: black;
 		--text-dark: hsl(212, 11%, 23%);
 		--text-placeholder: hsl(34, 5%, 30%);
 		--color-primary: hsl(209, 17%, 24%);
@@ -20,8 +21,8 @@
 	:root[data-theme='dark'] {
 		--text-header: hsl(43, 67%, 50%);
 		--text-light: hsl(34, 5%, 71%);
-		--text-body: hsl(30, 3%, 75%);
-		--text-dark: var(--text-body);
+		--text-body: whitesmoke;
+		--text-dark: hsl(30, 3%, 75%);
 		--color-primary: hsl(206, 13%, 14%);
 		--color-secondary: hsl(43, 91%, 25%);
 		--color-navbar: hsl(215, 17%, 25%, 0.8);

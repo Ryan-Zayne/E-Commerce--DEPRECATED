@@ -27,7 +27,7 @@ const NavigationLinks = ({ logo }) => {
 	};
 
 	return (
-		<article className="w-full">
+		<article id="Navigation Links" className="w-full">
 			{/* OVERLAY FOR MOBILE AND TABLET VIEWS */}
 			{!isDesktop && (
 				<div onClick={navShowHandler} className={styles.OVERLAY_CLASSES}>
@@ -67,10 +67,11 @@ const NavigationLinks = ({ logo }) => {
 					{!isDesktop && (
 						<img className="ml-[4rem] mb-[2rem] w-[13rem] md:w-[16rem]" src={logo} alt="" />
 					)}
-					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Home</li>
-					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Categories</li>
-					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Product</li>
-					<li className={!isDesktop ? 'ml-[4rem]' : ''}>Contact</li>
+
+					<li className={!isDesktop ? 'pl-[4rem]' : ''}>Categories</li>
+					<li className={!isDesktop ? 'pl-[4rem]' : ''}>Home</li>
+					<li className={!isDesktop ? 'pl-[4rem]' : ''}>Product</li>
+					<li className={!isDesktop ? 'pl-[4rem]' : ''}>Contact</li>
 				</ul>
 
 				{isDesktop && (

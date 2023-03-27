@@ -7,39 +7,38 @@ const elements = [
 	{ target: 'paragraph', animationClass: 'animate-fade-in-up-2' },
 ];
 
+class ELementError extends Error {
+	constructor(value) {
+		super(`"${value}" does not Exist`);
+		this.name = 'ElementError';
+	}
+}
+
 const useAnimateRef = () => {
 	const elementRef = useRef({});
 	const currentSlide = useGlobalStore((state) => state.currentSlide);
 
 	useEffect(() => {
 		elements.forEach((elem) => {
-			elementRef.current[elem.target]?.classList.add(elem.animationClass);
+			if (!elementRef.current[elem.target]) {
+				throw new ELementError(elem.target);
+			}
 
-			// Error Handling
-			console.assert(
-				elementRef.current[elem.target],
-				new Error(`Target Element: ${elem.target} does not exist!`)
-			);
+			elementRef.current[elem.target].classList.add(elem.animationClass);
 		});
 
 		// Animation Timer
-		const fadeAnimation = setTimeout(() => {
+		const fadeAnimationId = setTimeout(() => {
 			elements.forEach((elem) => {
-				elementRef.current[elem.target]?.classList.remove(elem.animationClass);
+				elementRef.current[elem.target].classList.remove(elem.animationClass);
 			});
 		}, 2000);
 
 		// Cleanup
-		return () => clearTimeout(fadeAnimation);
+		return () => clearTimeout(fadeAnimationId);
 	}, [currentSlide]);
 
 	return { animatedElements: elementRef.current };
 };
 
 export default useAnimateRef;
-
-// Imitation setState updater function for react useState
-// const updateCurrent = (updater) => {
-// 	elementRef = updater(elementRef.current);
-// };
-// updateCurrent((prev) => ({ ...prev }));

@@ -11,7 +11,7 @@ const Carousel = () => {
 	const { currentSlide, goToSlide, nextSlideButton, previousSlideButton } = useCarousel({
 		numberOfSlides: images.length,
 		autoPlay: true,
-		interval: 8000,
+		interval: 10000,
 	});
 	const { animatedElements } = useAnimateRef();
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
@@ -21,8 +21,8 @@ const Carousel = () => {
 			onClick={() => goToSlide(index)}
 			key={item}
 			className={twMerge(`
-				inline-block h-[0.8rem] w-[0.8rem] shrink-0 cursor-pointer rounded-[50%] bg-carousel-btn transition-[width] duration-[300ms] [transition-timing-function:ease] hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
-				${index === currentSlide ? 'w-[3.5rem] rounded-[1rem] bg-carousel-dot' : ''}
+				inline-block h-[0.8rem] w-[0.8rem] shrink-0 cursor-pointer rounded-[50%] bg-carousel-btn transition-[width] duration-[250ms] ease-in-out hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)]
+				${index === currentSlide ? 'w-[3.5rem] rounded-[0.5rem] bg-carousel-dot' : ''}
 			`)}
 		/>
 	));
@@ -32,7 +32,7 @@ const Carousel = () => {
 			<img
 				key={image}
 				className={twMerge(`
-					absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[2000ms] [transition-timing-function:ease]
+					absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[1500ms] [transition-timing-function:ease]
 					${index === currentSlide ? 'opacity-1 translate-x-[0]' : 'translate-x-[-100%] opacity-[0.6]'}
 				`)}
 				src={image}
@@ -42,7 +42,10 @@ const Carousel = () => {
 	});
 
 	return (
-		<article id="Carousel" className="relative flex min-h-[41.4rem] max-sm:mx-[2rem]">
+		<article
+			id="Carousel"
+			className="relative flex min-h-[38rem] max-sm:mx-[0.7rem] md:min-h-[41.4rem]"
+		>
 			<button
 				onClick={previousSlideButton}
 				className="absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] hover:[box-shadow:0_0_5px_var(--text-dark)] active:scale-[1.1] md:left-[0.9rem]"
