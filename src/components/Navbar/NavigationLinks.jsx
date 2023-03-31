@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BsMenuButtonFill } from 'react-icons/bs';
 import { twMerge } from 'tailwind-merge';
 import { useDesktopQuery } from '../../hooks';
@@ -14,7 +15,7 @@ const NavigationLinks = ({ logo }) => {
 				flex md:gap-[4.5rem]
 				${
 					!isDesktop
-						? 'z-[100] fixed text-[1.4rem] md:text-[1.6rem] text-body flex-col w-0 gap-[3.2rem] bg-navbar pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
+						? 'z-[100] fixed text-[1.4rem] md:text-[1.6rem] text-[whitesmoke] flex-col w-0 gap-[3.2rem] bg-navbar pt-[7rem] [inset:0_0_0_auto] [transition:width_200ms_ease] [backdrop-filter:blur(2rem)_saturate(5)]'
 						: ''
 				}
 				${isNavShow ? 'w-[min(21rem,_56%)] [transition:width_500ms_ease]' : ''}
@@ -25,6 +26,15 @@ const NavigationLinks = ({ logo }) => {
 				${isNavShow ? 'w-screen' : ''}
 		`),
 	};
+
+	useEffect(() => {
+		if (isNavShow) {
+			document.body.classList.add('overflow-hidden');
+		}
+		return () => {
+			document.body.classList.remove('overflow-hidden');
+		};
+	}, [isNavShow]);
 
 	return (
 		<article id="Navigation Links" className="w-full">
@@ -43,7 +53,7 @@ const NavigationLinks = ({ logo }) => {
 							<BsMenuButtonFill />
 							Shop By Category
 						</button>
-						<ul className="absolute min-h-[41.5rem] w-full bg-body px-[2rem] pt-[5rem] font-[400] [box-shadow:0_0_3px_0.1px_var(--carousel-dot)]">
+						<ul className="absolute min-h-[41.4rem] w-full bg-body px-[2rem] pt-[5rem] font-[400] [box-shadow:0_0_3px_0.1px_var(--carousel-dot)]">
 							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
 								All Products
 							</li>

@@ -29,13 +29,13 @@ const NavHeader = ({ logo }) => {
 						<BiSearchAlt2 />
 					</button>
 				)}
-				<button className="hover:text-heading active:scale-[1.2]">
+				<button className="hover:text-heading active:scale-[1.3]">
 					<BiHeart />
 				</button>
-				<button className="hover:text-heading active:scale-[1.2]">
+				<button className="hover:text-heading active:scale-[1.3]">
 					<BiUser />
 				</button>
-				<button className="hover:text-heading active:scale-[1.2]">
+				<button className="hover:text-heading active:scale-[1.3]">
 					<BiCartAlt />
 				</button>
 
@@ -46,11 +46,11 @@ const NavHeader = ({ logo }) => {
 						id="Hamburger"
 						className={twMerge(`
 							z-[120] w-[2.6rem]
-							${isNavShow ? 'sm:animate-[bounce_1.5s_ease_infinite]' : ''}
+							${isNavShow ? 'fixed right-[1.9rem] text-rose-600 sm:animate-[bounce_1.5s_ease_infinite]' : ''}
 						`)}
 						onClick={navShowHandler}
 					>
-						{isNavShow ? <RiCloseFill className="text-[2.6rem]" /> : <RiMenu3Fill />}
+						{isNavShow ? <RiCloseFill className="text-[3rem]" /> : <RiMenu3Fill />}
 					</button>
 				)}
 			</div>

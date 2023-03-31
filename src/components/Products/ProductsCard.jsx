@@ -30,7 +30,6 @@ const ProductCard = ({ image, title, price, description }) => {
 
 					<img
 						className="h-full rounded-[0.8rem_0.8rem_0_0] brightness-[0.9]"
-						loading="lazy"
 						src={image}
 						alt=""
 					/>

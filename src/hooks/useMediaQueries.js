@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const mobileQuery = window.matchMedia('(max-width: 767px)');
 const tabletQuery = window.matchMedia('(min-width: 768px)');
@@ -7,7 +7,7 @@ const desktopQuery = window.matchMedia('(min-width: 1000px)');
 export const useMobileQuery = () => {
 	const [isMobile, setIsMobile] = useState(() => mobileQuery.matches);
 
-	const handleMediaQueryChange = () => setIsMobile(mobileQuery.matches);
+	const handleMediaQueryChange = useCallback(() => setIsMobile(mobileQuery.matches), []);
 
 	useEffect(() => {
 		handleMediaQueryChange(); // Set initial state
@@ -23,7 +23,7 @@ export const useMobileQuery = () => {
 export const useTabletQuery = () => {
 	const [isTablet, setIsTablet] = useState(() => tabletQuery.matches);
 
-	const handleMediaQueryChange = () => setIsTablet(tabletQuery.matches);
+	const handleMediaQueryChange = useCallback(() => setIsTablet(tabletQuery.matches), []);
 
 	useEffect(() => {
 		handleMediaQueryChange(); // Set initial state
@@ -39,7 +39,7 @@ export const useTabletQuery = () => {
 export const useDesktopQuery = () => {
 	const [isDesktop, setIsDesktop] = useState(() => desktopQuery.matches);
 
-	const handleMediaQueryChange = () => setIsDesktop(desktopQuery.matches);
+	const handleMediaQueryChange = useCallback(() => setIsDesktop(desktopQuery.matches), []);
 
 	useEffect(() => {
 		handleMediaQueryChange(); // Set initial state
