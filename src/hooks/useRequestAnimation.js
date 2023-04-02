@@ -1,34 +1,41 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 const useRequestAnimation = (callback, delay) => {
 	const savedCallback = useRef();
+	const startTimestamp = useRef(0);
+	const animationFrameId = useRef(null);
 
 	useEffect(() => {
 		savedCallback.current = callback;
 	}, [callback]);
 
-	// eslint-disable-next-line consistent-return
-	useEffect(() => {
-		let animationFrameId;
-		let start;
+	const playAnimation = useCallback(
+		(timestamp) => {
+			if (!startTimestamp.current) {
+				startTimestamp.current = timestamp;
+			}
 
-		function playAnimation(timestamp) {
-			if (!start) start = timestamp;
-			const elapsed = timestamp - start;
+			const elapsed = timestamp - startTimestamp.current;
 
 			if (elapsed > delay) {
 				savedCallback.current();
-				start = timestamp;
+				startTimestamp.current = timestamp;
 			}
 
-			animationFrameId = requestAnimationFrame(playAnimation);
-		}
+			animationFrameId.current = requestAnimationFrame(playAnimation);
+		},
+		[delay]
+	);
 
+	// eslint-disable-next-line consistent-return
+	useEffect(() => {
 		if (delay !== null) {
-			animationFrameId = requestAnimationFrame(playAnimation);
-			return () => cancelAnimationFrame(animationFrameId);
+			animationFrameId.current = requestAnimationFrame(playAnimation);
+			return () => cancelAnimationFrame(animationFrameId.current);
 		}
-	}, [delay]);
+	}, [delay, playAnimation]);
+
+	return animationFrameId.current;
 };
 
 export default useRequestAnimation;
