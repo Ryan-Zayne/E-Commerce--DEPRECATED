@@ -83,10 +83,10 @@ const NavigationLinks = ({ logo }) => {
 						<img className="ml-[4rem] mb-[2rem] w-[13rem] md:w-[16rem]" src={logo} alt="" />
 					)}
 
-					<li className={!isDesktop ? 'pl-[4rem]' : ''}>Categories</li>
-					<li className={!isDesktop ? 'pl-[4rem]' : ''}>Home</li>
-					<li className={!isDesktop ? 'pl-[4rem]' : ''}>Product</li>
-					<li className={!isDesktop ? 'pl-[4rem]' : ''}>Contact</li>
+					<li className={`${!isDesktop ? 'pl-[4rem]' : ''}`}>Categories</li>
+					<li className={`${!isDesktop ? 'pl-[4rem]' : ''}`}>Home</li>
+					<li className={`${!isDesktop ? 'pl-[4rem]' : ''}`}>Product</li>
+					<li className={`${!isDesktop ? 'pl-[4rem]' : ''}`}>Contact</li>
 				</ul>
 
 				{isDesktop && (

@@ -14,11 +14,11 @@ const SimilarProducts = () => {
 		staleTime: Infinity,
 	});
 
-	if (products1.isLoading) {
+	if (products1.isLoading || products2.isLoading) {
 		return <h4 className="mt-[3rem] text-center text-[3rem] font-bold">Loading...</h4>;
 	}
 
-	if (products1.isError) {
+	if (products1.isError || products2.isError) {
 		return (
 			<h4 className="mt-[3rem] text-center font-roboto text-[3rem] font-medium text-rose-500">
 				Error: {products2.error.message}
@@ -33,6 +33,7 @@ const SimilarProducts = () => {
 			title={product.title}
 			price={product.price}
 			description={product.description}
+			rating={product.rating}
 		/>
 	));
 
@@ -43,6 +44,7 @@ const SimilarProducts = () => {
 			title={product.title}
 			price={product.price}
 			description={product.description}
+			rating={product.rating}
 		/>
 	));
 

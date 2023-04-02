@@ -27,6 +27,7 @@ const RecentProducts = () => {
 			title={product.title}
 			price={product.price}
 			description={product.description}
+			rating={product.rating}
 		/>
 	));
 

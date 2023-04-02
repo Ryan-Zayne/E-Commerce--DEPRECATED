@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { useAnimateRef, useCarousel } from '../../hooks';
 import { useThemeStore } from '../../zustand-store/themeStore';
 import { Button } from '../common';
+import CarouselItem from './CarouselItem';
 
 const images = [
 	'https://res.cloudinary.com/djvestif4/image/upload/v1680454294/Ecommerce/Carousel-images/laptop1_dviwpy.webp',
@@ -15,7 +16,7 @@ const images = [
 
 const Carousel = () => {
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
-	const { currentSlide, goToSlide, nextSlideButton, previousSlideButton } = useCarousel({
+	const { currentSlide, setIsPaused, goToSlide, nextSlideButton, previousSlideButton } = useCarousel({
 		numberOfSlides: images.length,
 		autoPlay: true,
 		interval: 10000,
@@ -33,24 +34,27 @@ const Carousel = () => {
 		/>
 	));
 
-	const carouselSlides = images.map((image, index) => {
+	const carouselItems = images.map((image) => {
 		return (
-			<img
-				key={image}
-				className={twMerge(`
-					absolute h-full object-cover object-[center] transition-[opacity,transform] duration-[1500ms] [transition-timing-function:ease]
-					${index === currentSlide ? 'opacity-1 translate-x-[0]' : 'translate-x-[-100%] opacity-[0.6]'}
-				`)}
-				src={image}
-				alt=""
-			/>
+			<CarouselItem key={image}>
+				<img
+					className="h-full object-cover object-[center] max-md:rounded-[1rem]"
+					src={image}
+					alt=""
+				/>
+			</CarouselItem>
 		);
 	});
 
 	return (
 		<article
 			id="Carousel"
-			className="relative flex min-h-[38rem] max-sm:mx-[0.7rem] md:min-h-[41.4rem]"
+			className={`
+				relative flex h-[38rem] overflow-hidden max-sm:mx-[0.7rem] md:h-[41.4rem]
+				${isDarkMode ? 'max-md:[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''}
+			`}
+			onMouseEnter={() => setIsPaused(true)}
+			onMouseLeave={() => setIsPaused(false)}
 		>
 			<button
 				onClick={previousSlideButton}
@@ -60,13 +64,11 @@ const Carousel = () => {
 			</button>
 
 			<ul
-				id="Images"
-				className={twMerge(`
-					relative w-full overflow-hidden rounded-[5px] brightness-[0.6] contrast-[1] md:rounded-none
-					${isDarkMode ? '[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''}
-				`)}
+				id="Carousel Body"
+				className="h-full whitespace-nowrap brightness-[0.6] contrast-[1] transition-[transform] duration-[1500ms] [transition-timing-function:ease]"
+				style={{ transform: `translateX(-${currentSlide * 100}%)` }}
 			>
-				{carouselSlides}
+				{carouselItems}
 			</ul>
 
 			<span
@@ -76,12 +78,12 @@ const Carousel = () => {
 				{carouselDots}
 			</span>
 
-			<section
-				id="Description"
+			<div
+				id="Carousel Description"
 				className="absolute mt-[5.5rem] flex w-full select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light md:pl-[5rem]"
 			>
 				{/* Heading and Caption */}
-				<article className="w-[28ch]">
+				<div className="w-[28ch]">
 					<h1
 						ref={(elem) => (animatedElements.heading = elem)}
 						className="font-roboto text-[clamp(2rem,_3vw+1rem,_2.5rem)] font-[600] text-heading"
@@ -95,18 +97,18 @@ const Carousel = () => {
 						Discover the Latest and most Exquisite Tech Products for Your Home, Office, and
 						On-the-go Needs.
 					</p>
-				</article>
+				</div>
 
 				{/* Shop-Now button */}
-				<span ref={(elem) => (animatedElements.button = elem)}>
+				<div ref={(elem) => (animatedElements.button = elem)}>
 					<Button
 						theme={'secondary'}
 						className="text-[clamp(1.3rem,_1vw+1rem,_1.6rem)] font-[600] transition-shadow duration-[400ms] hover:[box-shadow:0_10px_20px_hsl(43,100%,55%,0.4)] active:scale-[1.04] max-sm:p-[1rem_2.8rem]"
 					>
 						Shop Now
 					</Button>
-				</span>
-			</section>
+				</div>
+			</div>
 
 			<button
 				onClick={nextSlideButton}

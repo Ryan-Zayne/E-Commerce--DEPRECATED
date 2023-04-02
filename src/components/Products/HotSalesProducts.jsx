@@ -24,10 +24,10 @@ const HotSalesProducts = () => {
 		<ProductsCard
 			key={product.id}
 			image={product.images[0]}
-			rating={product.rating}
 			title={product.title}
 			price={product.price}
 			description={product.description}
+			rating={product.rating}
 		/>
 	));
 	return (
