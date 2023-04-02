@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useGlobalActions, useGlobalStore } from '../zustand-store/globalStore';
-import useInterval from './useInterval';
+import useRequestAnimation from './useRequestAnimation';
 
 const useCarousel = ({ numberOfSlides, autoPlay = false, interval = 10000 }) => {
 	const [isPaused, setIsPaused] = useState(false);
@@ -14,7 +14,7 @@ const useCarousel = ({ numberOfSlides, autoPlay = false, interval = 10000 }) => 
 	const previousSlideButton = () => (currentSlide === 0 ? goToSlide(maxSlide) : previousSlide());
 
 	// Autoplay functionality
-	useInterval(() => nextSlideButton(), autoPlay && !isPaused ? interval : null);
+	useRequestAnimation(() => nextSlideButton(), autoPlay && !isPaused ? interval : null);
 
 	return { currentSlide, goToSlide, previousSlideButton, nextSlideButton, setIsPaused };
 };

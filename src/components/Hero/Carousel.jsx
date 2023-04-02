@@ -38,7 +38,7 @@ const Carousel = () => {
 		return (
 			<CarouselItem key={image}>
 				<img
-					className="h-full object-cover object-[center] max-md:rounded-[1rem]"
+					className="h-full object-cover object-[center] max-sm:rounded-[1rem]"
 					src={image}
 					alt=""
 				/>
@@ -53,8 +53,8 @@ const Carousel = () => {
 				relative flex h-[38rem] overflow-hidden max-sm:mx-[0.7rem] md:h-[41.4rem]
 				${isDarkMode ? 'max-md:[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''}
 			`}
-			onMouseEnter={() => setIsPaused(true)}
-			onMouseLeave={() => setIsPaused(false)}
+			onPointerEnter={() => setIsPaused(true)}
+			onPointerLeave={() => setIsPaused(false)}
 		>
 			<button
 				onClick={previousSlideButton}
