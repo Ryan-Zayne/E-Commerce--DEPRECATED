@@ -9,7 +9,7 @@
 		--text-body: black;
 		--text-dark: hsl(212, 11%, 23%);
 		--text-placeholder: hsl(34, 5%, 30%);
-		--color-primary: hsl(209, 17%, 24%);
+		--color-primary: hsl(206, 13%, 14%);
 		--color-secondary: hsl(43, 100%, 55%);
 		--color-body: hsl(0, 0%, 100%);
 		--color-navbar: hsl(215, 19%, 35%, 0.8);
@@ -23,7 +23,6 @@
 		--text-light: hsl(34, 5%, 71%);
 		--text-body: whitesmoke;
 		--text-dark: hsl(30, 3%, 75%);
-		--color-primary: hsl(206, 13%, 14%);
 		--color-secondary: hsl(43, 91%, 25%);
 		--color-navbar: hsl(215, 17%, 25%, 0.8);
 		--color-body: hsl(240, 6%, 7%);

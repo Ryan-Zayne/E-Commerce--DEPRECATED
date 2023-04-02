@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { useGlobalActions, useGlobalStore } from '../zustand-store/globalStore';
+import useInterval from './useInterval';
 
 const useCarousel = ({ numberOfSlides, autoPlay = false, interval = 10000 }) => {
 	const currentSlide = useGlobalStore((state) => state.currentSlide);
@@ -12,13 +12,8 @@ const useCarousel = ({ numberOfSlides, autoPlay = false, interval = 10000 }) => 
 
 	const previousSlideButton = () => (currentSlide === 0 ? goToSlide(maxSlide) : previousSlide());
 
-	useEffect(() => {
-		let infiniteScrollId;
-		if (autoPlay) {
-			infiniteScrollId = setInterval(() => nextSlideButton(), interval);
-		}
-		return () => clearInterval(infiniteScrollId);
-	});
+	// Autoplay functionality
+	useInterval(() => nextSlideButton(), autoPlay ? interval : null);
 
 	return { currentSlide, goToSlide, previousSlideButton, nextSlideButton };
 };

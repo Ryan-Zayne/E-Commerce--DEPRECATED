@@ -1,10 +1,11 @@
 import { FiHeart } from 'react-icons/fi';
+import { IoMdStar } from 'react-icons/io';
 import { twMerge } from 'tailwind-merge';
 import { useThemeStore } from '../../zustand-store/themeStore';
 import Button from '../common/Button';
 import Card from '../common/Card';
 
-const ProductCard = ({ image, title, price, description }) => {
+const ProductCard = ({ image, title, price, description, rating }) => {
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
 
 	return (
@@ -44,11 +45,19 @@ const ProductCard = ({ image, title, price, description }) => {
 						</span>
 					</header>
 					<p className="mt-[0.5rem] min-h-[6rem] max-w-[30ch] text-[1rem]">{description}</p>
+
+					<div className="mt-[1rem] flex items-center text-[1.2rem]">
+						{[...Array(5)].map((icon, index) => (
+							// eslint-disable-next-line react/no-array-index-key
+							<IoMdStar key={index} color="var(--text-header)" />
+						))}
+						<span className="ml-[1rem]">{rating}</span>
+					</div>
 				</div>
 			</Card.Body>
 
 			<Card.Footer>
-				<div className="p-[1.6rem_1rem_1rem]">
+				<div className="p-[1.3rem_1rem_1rem]">
 					<hr className="h-[1.8px] bg-carousel-dot opacity-0 group-hover/card:opacity-100" />
 					<Button
 						variant={'cart'}

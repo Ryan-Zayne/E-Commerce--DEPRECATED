@@ -1,15 +1,16 @@
 import { useFetch } from '../../hooks';
 import ProductsCard from './ProductsCard';
 
-function HotSalesProducts() {
+const HotSalesProducts = () => {
 	const products = useFetch({
 		key: ['hot-sales'],
 		url: '/products?limit=4&skip=4',
 		staleTime: Infinity,
 	});
 
-	if (products.isLoading)
+	if (products.isLoading) {
 		return <h4 className="mt-[3rem] text-center text-[3rem] font-bold">Loading...</h4>;
+	}
 
 	if (products.isError) {
 		return (
@@ -23,6 +24,7 @@ function HotSalesProducts() {
 		<ProductsCard
 			key={product.id}
 			image={product.images[0]}
+			rating={product.rating}
 			title={product.title}
 			price={product.price}
 			description={product.description}
@@ -36,5 +38,5 @@ function HotSalesProducts() {
 			</ul>
 		</article>
 	);
-}
+};
 export default HotSalesProducts;

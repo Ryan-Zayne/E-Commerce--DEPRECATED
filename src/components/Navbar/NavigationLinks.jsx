@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BsMenuButtonFill } from 'react-icons/bs';
+import { BsChevronDoubleRight, BsMenuButtonFill } from 'react-icons/bs';
 import { twMerge } from 'tailwind-merge';
 import { useDesktopQuery } from '../../hooks';
 
@@ -49,25 +49,30 @@ const NavigationLinks = ({ logo }) => {
 			<nav className="flex w-[100%] items-center justify-between font-[500] lg:pr-[2rem] ">
 				{isDesktop && (
 					<div id="Categories" className="relative z-50">
-						<button className="flex w-[28rem] items-center gap-[1rem] rounded-[0.5rem_0.5rem_0_0] bg-heading p-[1rem_1.5rem] font-[500] text-body">
-							<BsMenuButtonFill />
+						<button className="flex w-[28rem] items-center gap-[1rem] rounded-[0.5rem_0.5rem_0_0] bg-heading p-[1rem_1.5rem] font-[500] text-[var(--color-primary)]">
+							<BsMenuButtonFill className="text-[2rem]" />
 							Shop By Category
 						</button>
 						<ul className="absolute min-h-[41.4rem] w-full bg-body px-[2rem] pt-[5rem] font-[400] [box-shadow:0_0_3px_0.1px_var(--carousel-dot)]">
-							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
-								All Products
+							<li className="flex items-center justify-between py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								<p>All Products</p>
+								<BsChevronDoubleRight />
 							</li>
-							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
-								Smartphones
+							<li className="flex items-center justify-between py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								<p>Smartphones</p>
+								<BsChevronDoubleRight />
 							</li>
-							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
-								Laptops
+							<li className="flex items-center justify-between py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								<p>Laptops</p>
+								<BsChevronDoubleRight />
 							</li>
-							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
-								Men{`'`}s Watches
+							<li className="flex items-center justify-between py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								<p>Men{`'`}s Watches</p>
+								<BsChevronDoubleRight />
 							</li>
-							<li className="py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
-								Women{`'`}s Watches
+							<li className="flex items-center justify-between py-[1rem] [border-bottom:1px_solid_var(--color-primary)]">
+								<p>Women{`'`}s Watches</p>
+								<BsChevronDoubleRight />
 							</li>
 						</ul>
 					</div>

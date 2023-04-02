@@ -4,9 +4,9 @@ import { FaSun } from 'react-icons/fa';
 import { useThemeActions, useThemeStore } from '../../zustand-store/themeStore';
 
 const ThemeSwitchButton = ({ display }) => {
-	const { switchTheme, toggleDarkMode } = useThemeActions();
 	const theme = useThemeStore((state) => state.theme);
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
+	const { switchTheme, toggleDarkMode } = useThemeActions();
 
 	useLayoutEffect(() => {
 		document.documentElement.setAttribute('data-theme', theme);

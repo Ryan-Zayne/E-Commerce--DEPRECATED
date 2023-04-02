@@ -1,15 +1,16 @@
 import { useFetch } from '../../hooks';
 import ProductsCard from './ProductsCard';
 
-function RecentProducts() {
+const RecentProducts = () => {
 	const products = useFetch({
 		key: ['recently-viewed'],
-		url: '/products/category/smartphones',
+		url: '/products/category/smartphones?limit=4',
 		staleTime: Infinity,
 	});
 
-	if (products.isLoading)
+	if (products.isLoading) {
 		return <h4 className="mt-[3rem] text-center text-[3rem] font-bold">Loading...</h4>;
+	}
 
 	if (products.isError) {
 		return (
@@ -37,5 +38,5 @@ function RecentProducts() {
 			</ul>
 		</article>
 	);
-}
+};
 export default RecentProducts;
