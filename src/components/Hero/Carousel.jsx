@@ -1,9 +1,10 @@
 import { RxPaperPlane } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
 import { useAnimateRef, useCarousel } from '../../hooks';
+import { useGlobalStore } from '../../zustand-store/globalStore';
 import { useThemeStore } from '../../zustand-store/themeStore';
 import { Button } from '../common';
-import CarouselItem from './CarouselItem';
+import CarouselItem from './Carousel-Item';
 
 const images = [
 	'https://res.cloudinary.com/djvestif4/image/upload/v1680454294/Ecommerce/Carousel-images/laptop1_dviwpy.webp',
@@ -16,10 +17,12 @@ const images = [
 
 const Carousel = () => {
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
+	const isMobile = useGlobalStore((state) => state.isMobile);
+
 	const { currentSlide, setIsPaused, goToSlide, nextSlideButton, previousSlideButton } = useCarousel({
 		numberOfSlides: images.length,
-		autoPlay: true,
-		interval: 10000,
+		autoSlide: !isMobile && true,
+		autoSlideInterval: 10000,
 	});
 	const { animatedElements } = useAnimateRef();
 
@@ -37,11 +40,7 @@ const Carousel = () => {
 	const carouselItems = images.map((image) => {
 		return (
 			<CarouselItem key={image}>
-				<img
-					className="h-full object-cover object-[center] max-sm:rounded-[1rem]"
-					src={image}
-					alt=""
-				/>
+				<img className="h-full basis-full object-cover max-lg:rounded-[1rem]" src={image} alt="" />
 			</CarouselItem>
 		);
 	});
@@ -50,11 +49,11 @@ const Carousel = () => {
 		<article
 			id="Carousel"
 			className={`
-				relative flex h-[38rem] overflow-hidden max-sm:mx-[0.7rem] md:h-[41.4rem]
+				relative flex h-[38rem] overflow-hidden max-lg:mx-[0.7rem] max-lg:rounded-[0.7rem] md:h-[41.4rem]
 				${isDarkMode ? 'max-md:[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''}
 			`}
-			onPointerEnter={() => setIsPaused(true)}
-			onPointerLeave={() => setIsPaused(false)}
+			onMouseEnter={() => !isMobile && setIsPaused(true)}
+			onMouseLeave={() => !isMobile && setIsPaused(false)}
 		>
 			<button
 				onClick={previousSlideButton}
@@ -65,7 +64,7 @@ const Carousel = () => {
 
 			<ul
 				id="Carousel Body"
-				className="h-full whitespace-nowrap brightness-[0.6] contrast-[1] transition-[transform] duration-[1500ms] [transition-timing-function:ease]"
+				className=" h-full whitespace-nowrap brightness-[0.6] contrast-[1] transition-[transform] duration-[1500ms] [transition-timing-function:ease]"
 				style={{ transform: `translateX(-${currentSlide * 100}%)` }}
 			>
 				{carouselItems}

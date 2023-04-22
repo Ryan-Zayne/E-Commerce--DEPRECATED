@@ -1,5 +1,4 @@
 import { twMerge } from 'tailwind-merge';
-import { useMobileQuery } from '../../hooks';
 import { useGlobalStore } from '../../zustand-store/globalStore';
 import logo from '../../assets/brand/logo.svg';
 import NavHeader from './NavHeader';
@@ -8,7 +7,7 @@ import SearchForm from './SearchForm';
 
 const Navbar = () => {
 	const isSearchShow = useGlobalStore((state) => state.isSearchShow);
-	const isMobile = useMobileQuery();
+	const isMobile = useGlobalStore((state) => state.isMobile);
 
 	const FORM_CLASSES = twMerge(`
 		absolute top-[7.3rem] z-[10] px-[2rem] w-[100%] flex h-0 justify-center items-center overflow-y-hidden

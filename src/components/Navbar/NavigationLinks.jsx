@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import { BsChevronDoubleRight, BsMenuButtonFill } from 'react-icons/bs';
 import { twMerge } from 'tailwind-merge';
-import { useDesktopQuery } from '../../hooks';
-
 import { useGlobalActions, useGlobalStore } from '../../zustand-store/globalStore';
 
 const NavigationLinks = ({ logo }) => {
-	const isDesktop = useDesktopQuery();
+	const isDesktop = useGlobalStore((state) => state.isDesktop);
 	const isNavShow = useGlobalStore((state) => state.isNavShow);
 	const { navShowHandler } = useGlobalActions();
 

@@ -27,8 +27,10 @@ const useAnimateRef = () => {
 			elementRef.current[elem.target].classList.add(elem.animationClass);
 		});
 
-		// Animation Timer
-		const fadeAnimationId = setTimeout(() => {
+		// Animation Timeout
+		let fadeAnimationId;
+		// eslint-disable-next-line prefer-const
+		fadeAnimationId = setTimeout(() => {
 			elements.forEach((elem) => {
 				elementRef.current[elem.target].classList.remove(elem.animationClass);
 			});

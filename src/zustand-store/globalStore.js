@@ -1,19 +1,13 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { createGlobalStateSlice } from './slices/globalStateSlice';
+import { createMediaQuerySlice } from './slices/mediaQuerySlice';
 
-const storeObject = (set) => ({
-	isNavShow: false,
-	isSearchShow: false,
-	currentSlide: 0,
-	actions: {
-		navShowHandler: () => set((state) => ({ isNavShow: !state.isNavShow })),
-		searchShowHandler: () => set((state) => ({ isSearchShow: !state.isSearchShow })),
-		nextSlide: () => set((state) => ({ currentSlide: state.currentSlide + 1 })),
-		previousSlide: () => set((state) => ({ currentSlide: state.currentSlide - 1 })),
-		goToSlide: (resetValue) => set({ currentSlide: resetValue }),
-	},
+const globalStoreObject = (...params) => ({
+	...createGlobalStateSlice(...params),
+	...createMediaQuerySlice(...params),
 });
 
-export const useGlobalStore = create(devtools(storeObject));
-
-export const useGlobalActions = () => useGlobalStore((state) => state.actions);
+export const useGlobalStore = create(devtools(globalStoreObject));
+export const useGlobalActions = () => useGlobalStore((state) => state.globalActions);
+export const useMediaQueryActions = () => useGlobalStore((state) => state.mediaQueryActions);

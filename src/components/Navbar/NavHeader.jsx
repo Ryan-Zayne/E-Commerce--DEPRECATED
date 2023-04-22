@@ -1,15 +1,14 @@
 import { BiCartAlt, BiHeart, BiSearchAlt2, BiUser } from 'react-icons/bi';
 import { RiCloseFill, RiMenu3Fill } from 'react-icons/ri';
 import { twMerge } from 'tailwind-merge';
-import { useDesktopQuery, useMobileQuery, useTabletQuery } from '../../hooks';
 import { useGlobalActions, useGlobalStore } from '../../zustand-store/globalStore';
 import SearchForm from './SearchForm';
 import ThemeSwitchButton from './ThemeSwitchButton';
 
 const NavHeader = ({ logo }) => {
-	const isMobile = useMobileQuery();
-	const isTablet = useTabletQuery();
-	const isDesktop = useDesktopQuery();
+	const isMobile = useGlobalStore((state) => state.isMobile);
+	const isTablet = useGlobalStore((state) => state.isTablet);
+	const isDesktop = useGlobalStore((state) => state.isDesktop);
 
 	const { searchShowHandler, navShowHandler } = useGlobalActions();
 	const isNavShow = useGlobalStore((state) => state.isNavShow);
@@ -46,7 +45,7 @@ const NavHeader = ({ logo }) => {
 						id="Hamburger"
 						className={twMerge(`
 							z-[120] w-[2.6rem]
-							${isNavShow ? 'fixed right-[1.9rem] text-rose-600 sm:animate-[bounce_1.5s_ease_infinite]' : ''}
+							${isNavShow ? 'fixed right-[1.9rem] animate-[bounce_1.5s_ease_infinite] text-rose-600' : ''}
 						`)}
 						onClick={navShowHandler}
 					>

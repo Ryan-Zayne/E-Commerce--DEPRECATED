@@ -21,17 +21,18 @@ const ProductCard = ({ image, title, price, description, rating }) => {
 				`)}
 		>
 			<Card.Body>
-				<div className="relative h-[18rem] w-[100%]">
+				<div className="relative h-[18rem] w-[100%] overflow-hidden">
 					<button
 						id="Wishlist Icon"
 						className="group/btn absolute bottom-[1.3rem] right-[1.3rem] z-[1] rounded-[50%] bg-primary p-[0.7rem] opacity-0 transition-opacity duration-[1s] group-hover/card:opacity-100"
 					>
-						<FiHeart className="text-[1.7rem] text-carousel-dot active:scale-[1.2] group-hover/btn:text-heading" />
+						<FiHeart className="text-[1.7rem] text-carousel-dot group-hover/btn:text-heading group-active/btn:scale-[1.2]" />
 					</button>
 
 					<img
-						className="h-full rounded-[0.8rem_0.8rem_0_0] brightness-[0.9]"
+						className="h-full rounded-[0.8rem_0.8rem_0_0] object-cover brightness-[0.9] transition-all duration-700 hover:scale-[1.15]"
 						src={image}
+						loading="lazy"
 						alt=""
 					/>
 				</div>
