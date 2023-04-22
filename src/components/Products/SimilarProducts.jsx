@@ -52,7 +52,7 @@ const SimilarProducts = () => {
 		<article id="Similar Products You Might Like" className="flex flex-col gap-[2rem] px-[3rem]">
 			<h2 className="text-[2rem] font-[700] max-md:text-center">Similar Products You Might Like</h2>
 			<ul className="grid grid-cols-[repeat(auto-fit,_minmax(23rem,1fr))] justify-items-center gap-[3rem_1.5rem]">
-				{renderedProducts1.concat(renderedProducts2)}
+				{[...renderedProducts1, ...renderedProducts2]}
 			</ul>
 		</article>
 	);
