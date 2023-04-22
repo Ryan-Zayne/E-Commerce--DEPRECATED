@@ -40,7 +40,7 @@ const Carousel = () => {
 	const carouselItems = images.map((image) => {
 		return (
 			<CarouselItem key={image}>
-				<img className="h-full basis-full object-cover max-lg:rounded-[1rem]" src={image} alt="" />
+				<img className="h-full object-cover" src={image} alt="" />
 			</CarouselItem>
 		);
 	});
