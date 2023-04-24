@@ -3,8 +3,8 @@ export const createGlobalStateSlice = (set) => ({
 	isSearchShow: false,
 	currentSlide: 0,
 	globalActions: {
-		navShowHandler: () => set((state) => ({ isNavShow: !state.isNavShow })),
-		searchShowHandler: () => set((state) => ({ isSearchShow: !state.isSearchShow })),
+		handleNavShow: () => set((state) => ({ isNavShow: !state.isNavShow })),
+		handleSearchShow: () => set((state) => ({ isSearchShow: !state.isSearchShow })),
 		nextSlide: () => set((state) => ({ currentSlide: state.currentSlide + 1 })),
 		previousSlide: () => set((state) => ({ currentSlide: state.currentSlide - 1 })),
 		goToSlide: (resetValue) => set({ currentSlide: resetValue }),

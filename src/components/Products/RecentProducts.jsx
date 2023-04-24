@@ -1,11 +1,10 @@
 import { useFetch } from '../../hooks';
-import ProductsCard from './ProductsCard';
+import ProductCard from '../common/ProductCard';
 
 const RecentProducts = () => {
 	const products = useFetch({
 		key: ['recently-viewed'],
-		url: '/products/category/smartphones?limit=4',
-		staleTime: Infinity,
+		url: '/products/category/smartphones',
 	});
 
 	if (products.isLoading) {
@@ -20,16 +19,19 @@ const RecentProducts = () => {
 		);
 	}
 
-	const renderedProducts = products.data.products.map((product) => (
-		<ProductsCard
-			key={product.id}
-			image={product.images[0]}
-			title={product.title}
-			price={product.price}
-			description={product.description}
-			rating={product.rating}
-		/>
-	));
+	const renderedProducts = products.data.products
+		.filter((product) => product.id !== 3)
+		.map((product) => (
+			<ProductCard
+				key={product.id}
+				to={`all-products/${product.id}`}
+				image={product.images[0]}
+				title={product.title}
+				price={product.price}
+				description={product.description}
+				rating={product.rating}
+			/>
+		));
 
 	return (
 		<article id="Recently Viewed" className="flex flex-col gap-[2rem] px-[3rem]">

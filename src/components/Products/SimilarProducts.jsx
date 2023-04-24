@@ -1,17 +1,15 @@
 import { useFetch } from '../../hooks';
-import ProductsCard from './ProductsCard';
+import ProductCard from '../common/ProductCard';
 
 const SimilarProducts = () => {
 	const products1 = useFetch({
 		key: ['similar-products', 'motorcycles'],
 		url: '/products/category/motorcycle',
-		staleTime: Infinity,
 	});
 
 	const products2 = useFetch({
 		key: ['similar-products', 'mens-watches'],
 		url: '/products/category/mens-watches',
-		staleTime: Infinity,
 	});
 
 	if (products1.isLoading || products2.isLoading) {
@@ -21,14 +19,15 @@ const SimilarProducts = () => {
 	if (products1.isError || products2.isError) {
 		return (
 			<h4 className="mt-[3rem] text-center font-roboto text-[3rem] font-medium text-rose-500">
-				Error: {products2.error.message}
+				Error: {products1.error.message}
 			</h4>
 		);
 	}
 
 	const renderedProducts1 = products1.data.products.map((product) => (
-		<ProductsCard
-			key={product.images[0]}
+		<ProductCard
+			key={product.id}
+			to={`all-products/${product.id}`}
 			image={product.images[0]}
 			title={product.title}
 			price={product.price}
@@ -38,8 +37,9 @@ const SimilarProducts = () => {
 	));
 
 	const renderedProducts2 = products2.data.products.map((product) => (
-		<ProductsCard
-			key={product.images[1]}
+		<ProductCard
+			key={product.id}
+			to={`all-products/${product.id}`}
 			image={product.images[1]}
 			title={product.title}
 			price={product.price}

@@ -7,11 +7,14 @@ const Card = ({ as = 'article', children, className }) => {
 	);
 };
 
-const CardHeader = ({ children, className }) => (
-	<header id="Card_Header" className={className}>
-		{children}
-	</header>
-);
+const CardHeader = ({ as = 'header', children, className }) => {
+	const Element = as;
+	return (
+		<Element id="Card_Header" className={className}>
+			{children}
+		</Element>
+	);
+};
 
 const CardBody = ({ children, className }) => (
 	<div id="Card_Body" className={className}>

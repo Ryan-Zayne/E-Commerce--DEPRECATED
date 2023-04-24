@@ -1,11 +1,10 @@
 import { useFetch } from '../../hooks';
-import ProductsCard from './ProductsCard';
+import ProductCard from '../common/ProductCard';
 
 const HotSalesProducts = () => {
 	const products = useFetch({
 		key: ['hot-sales'],
 		url: '/products?limit=4&skip=4',
-		staleTime: Infinity,
 	});
 
 	if (products.isLoading) {
@@ -21,8 +20,9 @@ const HotSalesProducts = () => {
 	}
 
 	const renderedProducts = products.data.products.map((product) => (
-		<ProductsCard
+		<ProductCard
 			key={product.id}
+			to={`all-products/${product.id}`}
 			image={product.images[0]}
 			title={product.title}
 			price={product.price}
