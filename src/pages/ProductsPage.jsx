@@ -1,4 +1,4 @@
-import ProductCard from '../components/common/ProductCard';
+import { ProductCard } from '../components/common';
 import { useGetAllProducts } from '../hooks';
 
 const ProductsPage = () => {

@@ -50,10 +50,6 @@
 		font-size: 62.5%;
 	}
 
-	html,
-	body {
-		scroll-behavior: smooth;
-	}
 
 	input:focus-visible {
 		outline: 2px solid transparent;
@@ -71,6 +67,7 @@
 	}
 
 	body {
+		scroll-behavior: smooth;
 		font-size: 1.6rem;
 		font-family: 'Rubik', 'Trebuchet MS', sans-serif;
 		background-color: var(--color-body);

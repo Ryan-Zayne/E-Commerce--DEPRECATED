@@ -16,7 +16,7 @@ const useCarousel = ({ numberOfSlides, autoSlide = false, autoSlideInterval = 10
 	// AutoSlide functionality
 	useRequestAnimation(() => nextSlideButton(), autoSlide && !isPaused ? autoSlideInterval : null);
 
-	return { currentSlide, goToSlide, previousSlideButton, nextSlideButton, setIsPaused };
+	return { previousSlideButton, nextSlideButton, setIsPaused };
 };
 
 export default useCarousel;

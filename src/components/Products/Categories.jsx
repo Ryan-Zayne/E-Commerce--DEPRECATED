@@ -1,5 +1,5 @@
 import { useThemeStore } from '../../zustand-store/themeStore';
-import Button from '../common/Button';
+import { Button } from '../common';
 
 const categories = [
 	{
@@ -58,11 +58,11 @@ const Categories = () => {
 	));
 
 	return (
-		<section className="px-[3rem] lg:px-[7rem]">
-			<h2 className="mb-[2rem] text-center text-[2.5rem] font-[600] lg:text-[4rem]">
+		<section className="mt-[7rem] px-[3rem] lg:px-[7rem]">
+			<h2 className="mb-[3rem] text-center text-[2.5rem] font-[600] lg:text-[4rem]">
 				All Categories
 			</h2>
-			<ul className="grid auto-rows-[15rem] grid-cols-[repeat(auto-fit,_26rem)] justify-center gap-[2rem] lg:auto-rows-[20rem] lg:grid-cols-[repeat(3,_minmax(30rem,1fr))] lg:gap-[2.6rem]">
+			<ul className="grid auto-rows-[15rem] grid-cols-[repeat(auto-fit,_26rem)] justify-center gap-[2rem] lg:auto-rows-[20rem] lg:grid-cols-[repeat(3,_minmax(30rem,1fr))] lg:gap-[3rem]">
 				{renderedCategories}
 			</ul>
 		</section>

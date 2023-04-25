@@ -7,7 +7,7 @@ const Card = ({ as = 'article', children, className }) => {
 	);
 };
 
-const CardHeader = ({ as = 'header', children, className }) => {
+const CardHeader = ({ as = 'header', children, className = '' }) => {
 	const Element = as;
 	return (
 		<Element id="Card_Header" className={className}>
@@ -16,13 +16,13 @@ const CardHeader = ({ as = 'header', children, className }) => {
 	);
 };
 
-const CardBody = ({ children, className }) => (
+const CardBody = ({ children, className = '' }) => (
 	<div id="Card_Body" className={className}>
 		{children}
 	</div>
 );
 
-const CardFooter = ({ children, className }) => (
+const CardFooter = ({ children, className = '' }) => (
 	<div id="Card_Footer" className={className}>
 		{children}
 	</div>

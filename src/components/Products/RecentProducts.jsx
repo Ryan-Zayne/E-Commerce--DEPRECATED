@@ -1,5 +1,5 @@
 import { useFetch } from '../../hooks';
-import ProductCard from '../common/ProductCard';
+import { ProductCard } from '../common';
 
 const RecentProducts = () => {
 	const products = useFetch({

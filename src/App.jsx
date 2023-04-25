@@ -2,8 +2,8 @@ import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } 
 import { useMediaQuery } from './hooks';
 import Home from './pages/Home';
 import ProductsPage from './pages/ProductsPage';
-import GlobalLayout from './components/common/GlobalLayout';
 import ProductItem from './pages/ProductItemPage';
+import GlobalLayout from './routes/GlobalLayout';
 
 const App = () => {
 	useMediaQuery();

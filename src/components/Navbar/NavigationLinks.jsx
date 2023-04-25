@@ -11,7 +11,7 @@ const NavigationLinks = ({ logo }) => {
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
 	const isDesktop = useGlobalStore((state) => state.isDesktop);
 	const isNavShow = useGlobalStore((state) => state.isNavShow);
-	const { handleNavShow } = useGlobalActions();
+	const { toggleNavShow, closeNavShow } = useGlobalActions();
 	const handleCategoryShow = () => setIsCategoryShow(!isCategoryShow);
 
 	// Close Category on Route Change that's not Home
@@ -71,9 +71,9 @@ const NavigationLinks = ({ logo }) => {
 
 	return (
 		<article id="Navigation Links" className="w-full">
-			{/* OVERLAY FOR MOBILE AND TABLET VIEWS */}
+			{/* HAMBURGER OVERLAY */}
 			{!isDesktop && (
-				<div onClick={handleNavShow} className={styles.OVERLAY_CLASSES}>
+				<div onClick={toggleNavShow} className={styles.OVERLAY_CLASSES}>
 					{/* Background Overlay here */}
 				</div>
 			)}
@@ -96,18 +96,18 @@ const NavigationLinks = ({ logo }) => {
 					</div>
 				)}
 
-				<ul id="Hamburger List" className={styles.NAVLIST_CLASSES}>
+				<ul id="Navigation List" className={styles.NAVLIST_CLASSES}>
 					{!isDesktop && (
 						<img className="mb-[2rem] ml-[4rem] w-[13rem] md:w-[16rem]" src={logo} alt="" />
 					)}
-					<li className="max-lg:pl-[4rem]">
+					<li className="max-lg:pl-[4rem]" onClick={closeNavShow}>
 						<Link to="/">Home</Link>
 					</li>
 					{!isDesktop && <li className="max-lg:pl-[4rem]">Categories</li>}
-					<li className="max-lg:pl-[4rem]">
+					<li className="max-lg:pl-[4rem]" onClick={closeNavShow}>
 						<Link to="/all-products">Products</Link>
 					</li>
-					<li className="max-lg:pl-[4rem]">
+					<li className="max-lg:pl-[4rem]" onClick={closeNavShow}>
 						<Link to="">Contact</Link>
 					</li>
 				</ul>
