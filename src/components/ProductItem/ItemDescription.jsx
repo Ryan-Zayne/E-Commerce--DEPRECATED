@@ -57,20 +57,20 @@ const ItemDescription = ({ productItem }) => {
 
 			<div className="mt-[4rem] flex gap-[3rem] font-[500] max-md:justify-center lg:mt-[6rem]">
 				<Button
-					theme={'ghost'}
+					theme={'secondary'}
 					variant={'shop'}
 					className={
-						'w-[15rem] p-[1rem_0] transition-none [box-shadow:0_0_0_1.3px_var(--color-primary)] hover:bg-secondary hover:[box-shadow:0_0_0_1.3px_var(--color-secondary)]'
+						'w-[15rem] p-[1rem_0] transition-[transform] duration-[800] ease-in-out  [box-shadow:0_0_0_1.3px_var(--color-secondary)] hover:bg-transparent hover:[box-shadow:0_0_0_1.3px_var(--color-primary)] active:scale-[1.1]'
 					}
 				>
 					<p>Buy Now</p>
 				</Button>
 
 				<Button
-					theme={'secondary'}
+					theme={'ghost'}
 					variant={'shop'}
 					className={
-						'w-[15rem] p-[1rem_0] transition-none [box-shadow:0_0_0_1.3px_var(--color-secondary)] hover:bg-transparent hover:[box-shadow:0_0_0_1.3px_var(--color-primary)]'
+						'w-[15rem] p-[1rem_0] transition-[transform] duration-[800] ease-in-out [box-shadow:0_0_0_1.3px_var(--color-primary)] hover:bg-secondary hover:[box-shadow:0_0_0_1.3px_var(--color-secondary)] active:scale-[1.1]'
 					}
 				>
 					<AiOutlineShoppingCart className="mr-[1rem] text-[2rem]" />
