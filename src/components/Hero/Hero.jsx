@@ -45,7 +45,7 @@ const Hero = () => {
 				arrowIcon={<RxPaperPlane />}
 				leftBtnClasses={styles.leftBtn}
 				rightBtnClasses={styles.rightBtn}
-				autoSlideInterval={10000}
+				autoSlideInterval={20000}
 				isAutoSlide
 				pauseOnHover
 			>
