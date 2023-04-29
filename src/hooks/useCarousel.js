@@ -7,6 +7,7 @@ import useRequestAnimation from './useRequestAnimation';
 const useCarousel = ({ numberOfSlides, isAutoSlide = false, autoSlideInterval = 10000 }) => {
 	const [isPaused, setIsPaused] = useState(false);
 	const currentSlide = useGlobalStore((state) => state.currentSlide);
+	const isNavShow = useGlobalStore((state) => state.isNavShow);
 	const { nextSlide, previousSlide, goToSlide } = useGlobalActions();
 	const href = useHref();
 
@@ -17,7 +18,10 @@ const useCarousel = ({ numberOfSlides, isAutoSlide = false, autoSlideInterval = 
 	const previousSlideButton = () => (currentSlide === 0 ? goToSlide(maxSlide) : previousSlide());
 
 	// AutoSlide functionality
-	useRequestAnimation(() => nextSlideButton(), isAutoSlide && !isPaused ? autoSlideInterval : null);
+	useRequestAnimation(
+		() => nextSlideButton(),
+		isAutoSlide && !isPaused && !isNavShow ? autoSlideInterval : null
+	);
 
 	// Resetting the currentSlide state on route change
 	useEffect(() => goToSlide(0), [href]);
