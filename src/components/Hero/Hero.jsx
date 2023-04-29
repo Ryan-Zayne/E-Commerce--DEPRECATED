@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { RxPaperPlane } from 'react-icons/rx';
 import { useAnimateRef } from '../../hooks';
 import { useThemeStore } from '../../zustand-store/themeStore';
@@ -25,14 +26,14 @@ const Hero = () => {
 		rightBtn: 'hover:[box-shadow:0_0_5px_var(--text-dark)] md:right-[0.8rem]',
 	};
 
-	const carouselItems = images.map((image) => (
-		<Carousel.Item key={image}>
+	const carouselItems = images.map((image, index) => (
+		<Carousel.Item key={index}>
 			<img className="object-cover" src={image} alt="" />
 		</Carousel.Item>
 	));
 
-	const carouselIndicators = images.map((image, index) => (
-		<Carousel.Indicator key={image} index={index} />
+	const carouselIndicators = images.map((_, index) => (
+		<Carousel.Indicator key={index} index={index} />
 	));
 
 	return (
@@ -44,15 +45,15 @@ const Hero = () => {
 				arrowIcon={<RxPaperPlane />}
 				leftBtnClasses={styles.leftBtn}
 				rightBtnClasses={styles.rightBtn}
-				isAutoSlide={true}
-				pauseOnHover={true}
 				autoSlideInterval={10000}
+				isAutoSlide
+				pauseOnHover
 			>
 				<Carousel.ItemWrapper className={'brightness-[0.6]'}>{carouselItems}</Carousel.ItemWrapper>
 
 				<Carousel.Caption
 					className={
-						'flex flex-col items-start px-[4.5rem] pt-[5.5rem] md:pl-[7.5rem] lg:pl-[36rem] lg:pt-[8rem]'
+						'flex flex-col items-start pl-[4.5rem] pt-[5.5rem] md:pl-[7.5rem] lg:pl-[36rem] lg:pt-[8rem]'
 					}
 				>
 					<div className="w-[28ch] lg:w-[30ch]">

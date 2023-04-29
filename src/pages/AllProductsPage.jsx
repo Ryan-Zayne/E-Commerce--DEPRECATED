@@ -1,7 +1,7 @@
 import { ProductCard } from '../components/common';
 import { useGetAllProducts } from '../hooks';
 
-const ProductsPage = () => {
+const AllProductsPage = () => {
 	const { allProducts, allProductsArray } = useGetAllProducts();
 
 	if (allProducts.some((item) => item.isLoading)) {
@@ -40,4 +40,4 @@ const ProductsPage = () => {
 	);
 };
 
-export default ProductsPage;
+export default AllProductsPage;

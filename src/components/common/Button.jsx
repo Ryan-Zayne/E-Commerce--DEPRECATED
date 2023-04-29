@@ -1,15 +1,6 @@
-import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-const Button = ({
-	theme = 'primary',
-	variant = 'regular',
-	size = 'md',
-	className,
-	text,
-	children,
-	onClick,
-}) => {
+const Button = ({ theme, variant = 'regular', size = 'md', className, text, children, onClick }) => {
 	const semanticVariants = {
 		regular: 'rounded-[0.5rem]',
 		input: 'rounded-[0_2.5rem_2.5rem_0]',
@@ -20,7 +11,7 @@ const Button = ({
 	const semanticThemes = {
 		primary: 'bg-primary text-white',
 		secondary: 'bg-secondary text-dark',
-		ghost: 'bg-transparent',
+		ghost: 'bg-transparent text-dark',
 	};
 
 	const semanticSizes = {
@@ -44,4 +35,4 @@ const Button = ({
 	);
 };
 
-export default memo(Button); // To prevent forced re-renders when no props change;
+export default Button;

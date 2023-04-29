@@ -16,11 +16,10 @@ const Carousel = ({
 	pauseOnHover = false,
 }) => {
 	const Element = as;
-	const isMobile = useGlobalStore((state) => state.isMobile);
 
 	const { setIsPaused, nextSlideButton, previousSlideButton } = useCarousel({
 		numberOfSlides: images.length,
-		isAutoSlide: !isMobile && isAutoSlide,
+		isAutoSlide,
 		autoSlideInterval,
 	});
 
@@ -28,13 +27,13 @@ const Carousel = ({
 		<Element
 			id="Carousel"
 			className={twMerge(`relative flex select-none ${outerClassName}`)}
-			onMouseEnter={() => (pauseOnHover && !isMobile === true ? setIsPaused(true) : null)}
-			onMouseLeave={() => (pauseOnHover && !isMobile === true ? setIsPaused(false) : null)}
+			onMouseEnter={() => pauseOnHover && setIsPaused(true)}
+			onMouseLeave={() => pauseOnHover && setIsPaused(false)}
 		>
 			<button className="absolute left-0 z-40 h-full w-[9rem]" onClick={previousSlideButton}>
 				<span
 					className={twMerge(
-						`absolute left-[0.7rem] top-[45%] rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] active:scale-[1.11] ${leftBtnClasses}`
+						`absolute left-[0.7rem] top-[45%] rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-transform active:scale-[1.11] ${leftBtnClasses}`
 					)}
 				>
 					{arrowIcon}
@@ -53,7 +52,7 @@ const Carousel = ({
 			<button className="absolute right-0 z-40 h-full w-[9rem]" onClick={nextSlideButton}>
 				<span
 					className={twMerge(
-						`absolute right-[0.7rem] top-[45%] rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] active:scale-[1.11] ${rightBtnClasses}`
+						`absolute right-[0.7rem] top-[45%] rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-transform active:scale-[1.11] ${rightBtnClasses}`
 					)}
 				>
 					{arrowIcon}
@@ -73,13 +72,13 @@ const CarouselItemWrapper = ({ children, className = '' }) => {
 	const currentSlide = useGlobalStore((state) => state.currentSlide);
 	return (
 		<ul
-			id="Carousel Image Content"
-			// Pointer event set to none to prevent swipe scrolling
+			id="Carousel Image Wrapper"
+			// Set pointer-events-none to prevent swipe scrolling (E get why...)
 			className={twMerge(
-				`pointer-events-none flex w-full shrink-0 flex-nowrap transition-[transform] duration-[600ms] ease-in-out ${className}`
+				`pointer-events-none flex w-full shrink-0 flex-nowrap transition-transform duration-[600ms] ease-in-out ${className}`
 			)}
 			style={{
-				transform: `translate3d(-${currentSlide * 100}%, 0, 0)`,
+				transform: `translateX(-${currentSlide * 100}%)`,
 			}}
 		>
 			{children}

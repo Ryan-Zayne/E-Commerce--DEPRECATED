@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom';
 import { useMediaQuery } from './hooks';
-import Home from './pages/Home';
-import ProductsPage from './pages/ProductsPage';
+import HomePage from './pages/HomePage';
+import AllProductsPage from './pages/AllProductsPage';
 import ProductItem from './pages/ProductItemPage';
 import GlobalLayout from './routes/GlobalLayout';
 
@@ -10,8 +10,8 @@ const App = () => {
 
 	const routes = createRoutesFromElements(
 		<Route path="/" element={<GlobalLayout />}>
-			<Route index element={<Home />} />
-			<Route path="all-products" element={<ProductsPage />} />
+			<Route index element={<HomePage />} />
+			<Route path="all-products" element={<AllProductsPage />} />
 			<Route path="all-products/:productId" element={<ProductItem />} />
 		</Route>
 	);
