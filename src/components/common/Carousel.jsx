@@ -74,8 +74,9 @@ const CarouselItemWrapper = ({ children, className = '' }) => {
 	return (
 		<ul
 			id="Carousel Image Content"
+			// Pointer event set to none to prevent swipe scrolling
 			className={twMerge(
-				`flex w-full shrink-0 flex-nowrap transition-[transform] duration-[600ms] ease-in-out ${className}`
+				`pointer-events-none flex w-full shrink-0 flex-nowrap transition-[transform] duration-[600ms] ease-in-out ${className}`
 			)}
 			style={{
 				transform: `translate3d(-${currentSlide * 100}%, 0, 0)`,

@@ -4,12 +4,10 @@ import { BsChevronRight } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import { Button, Carousel, StarRating } from '../components/common';
 import { useGetAllProducts } from '../hooks';
-import { useThemeStore } from '../zustand-store/themeStore';
 
 const ProductItemPage = () => {
 	const [productCount, setProductCount] = useState(1);
 	const { allProducts, allProductsArray } = useGetAllProducts();
-	const isDarkMode = useThemeStore((state) => state.isDarkMode);
 	const { productId } = useParams();
 
 	if (allProducts.some((item) => item.isLoading === true)) {
@@ -46,18 +44,19 @@ const ProductItemPage = () => {
 	const handleMinus = () => productCount > 1 && setProductCount((prev) => prev - 1);
 
 	return (
-		<section className="p-[2rem]">
+		<section className="p-[2rem_2rem_5rem]">
 			<article className="">
 				<h1 className="text-center font-roboto text-[2.6rem] font-[600]">{productItem.title}</h1>
 				<Carousel
 					as="div"
-					className={'mt-[1rem] h-[30rem] rounded-[0.7rem]'}
+					outerClassName={'mt-[1rem] h-[30rem]'}
+					innerClassName={'rounded-[0.7rem]'}
 					images={productItem.images}
 					arrowIcon={<BsChevronRight />}
-					leftBtnClasses="p-[0.7rem_0.3rem] text-[1.7rem]"
-					rightBtnClasses="p-[0.7rem_0.3rem] text-[1.7rem]"
+					leftBtnClasses={'p-[0.7rem_0.3rem] text-[1.7rem]'}
+					rightBtnClasses={'p-[0.7rem_0.3rem] text-[1.7rem]'}
 				>
-					<Carousel.ItemWrapper className="brightness-[0.65]">
+					<Carousel.ItemWrapper className={'brightness-[0.65]'}>
 						{carouselItems}
 					</Carousel.ItemWrapper>
 					<Carousel.IndicatorWrapper>{carouselIndicators}</Carousel.IndicatorWrapper>
@@ -85,7 +84,7 @@ const ProductItemPage = () => {
 					<h2 className="text-[2.4rem] font-[600]">Description</h2>
 					<p className="mt-[0.4rem] text-[1.5rem] font-[200]">{productItem.description}</p>
 
-					<div className="mt-[2rem] flex items-center gap-[6rem]">
+					<div className="mt-[3.5rem] flex items-center justify-between">
 						<div className="flex w-[17rem] items-center justify-between rounded-[4rem] bg-carousel-btn p-[0.7rem_1.3rem] text-[1.9rem] font-[600] ">
 							<button className="active:scale-[1.2]" onClick={handleMinus}>
 								<AiOutlineMinus />
@@ -96,7 +95,7 @@ const ProductItemPage = () => {
 							</button>
 						</div>
 
-						<div className="font-[300] tracking-wide">
+						<div className="whitespace-nowrap font-[300] tracking-wide">
 							<p>
 								Only{' '}
 								<span className="font-[500] text-heading">
@@ -109,20 +108,24 @@ const ProductItemPage = () => {
 					</div>
 				</div>
 
-				<div className="mt-[4rem] flex justify-center gap-[3rem] font-[500]">
+				<div className="mt-[4rem] flex justify-center gap-[3.5rem] font-[500] transition-none">
 					<Button
-						theme="ghost"
+						theme={'ghost'}
 						variant={'shop'}
-						className={`w-[15rem] p-[1.1rem_0] ${
-							isDarkMode
-								? '[box-shadow:0_0_0_1.3px_var(--text-header)]'
-								: '[box-shadow:0_0_0_1.3px_var(--color-primary)]'
-						}`}
+						className={
+							'w-[15rem] p-[1.1rem_0] [box-shadow:0_0_0_1.3px_var(--brand-inverse)] hover:bg-secondary hover:text-dark'
+						}
 					>
 						<p>Buy Now</p>
 					</Button>
 
-					<Button theme={'secondary'} variant={'shop'} className={'w-[15rem] p-[1.1rem_0]'}>
+					<Button
+						theme={'secondary'}
+						variant={'shop'}
+						className={
+							'w-[15rem] p-[1.1rem_0] [box-shadow:0_0_0_1.3px_var(--brand-inverse)] hover:bg-transparent hover:text-white'
+						}
+					>
 						<AiOutlineShoppingCart className="mr-[1rem] text-[2rem]" />
 						<p>Add to Cart</p>
 					</Button>

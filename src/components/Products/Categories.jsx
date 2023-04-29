@@ -44,12 +44,12 @@ const Categories = () => {
 				isDarkMode ? category.bg_dark : category.bg_light
 			}`}
 		>
-			<div className="flex min-w-[12rem] shrink-0 flex-col justify-center gap-[0.5rem]">
-				<h3 className="text-center text-[1.8rem]">{category.title}</h3>
+			<div className="flex min-w-[12rem] shrink-0 flex-col justify-center gap-[0.5rem] lg:gap-[1rem]">
+				<h3 className="text-center text-[1.8rem] lg:text-[2rem]">{category.title}</h3>
 				<Button
 					text={'Shop Now'}
 					variant={'shop'}
-					className="bg-body p-[0.8rem] text-[var(--text-body)] active:translate-y-[0.15rem] lg:p-[1rem_1.4rem]"
+					className="bg-body p-[0.8rem] text-[var(--text-body)] active:translate-y-[0.15rem] lg:p-[0.8rem_2.7rem] lg:text-[2rem]"
 				/>
 			</div>
 			<div className="flex w-[12rem] items-center lg:w-[15rem]">
@@ -59,11 +59,11 @@ const Categories = () => {
 	));
 
 	return (
-		<section className="mt-[7rem] px-[3rem] lg:px-[7rem]">
+		<section className="mt-[6rem] px-[3rem] lg:px-[7rem]">
 			<h2 className="mb-[3rem] text-center text-[2.5rem] font-[600] lg:text-[4rem]">
 				All Categories
 			</h2>
-			<ul className="grid auto-rows-[17rem] grid-cols-[repeat(auto-fit,_26rem)] justify-center gap-[2rem] lg:auto-rows-[20rem] lg:grid-cols-[repeat(3,_minmax(30rem,1fr))] lg:gap-[3rem]">
+			<ul className="grid auto-rows-[17rem] grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] justify-center gap-[2rem] lg:auto-rows-[20rem] lg:grid-cols-[repeat(3,_minmax(30rem,1fr))] lg:gap-[3rem]">
 				{renderedCategories}
 			</ul>
 		</section>
