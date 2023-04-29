@@ -1,24 +1,20 @@
-/* eslint-disable react/no-array-index-key */
 import { useState } from 'react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { AiOutlineHeart, AiFillHeart, AiFillStar } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
 import { useThemeStore } from '../../zustand-store/themeStore';
 import Button from './Button';
 import Card from './Card';
+import StarRating from './StarRating';
 
 const ProductCard = ({ to = '', image, title, price, description, rating }) => {
 	const [isHearted, setIsHearted] = useState(false);
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
 
-	const star5 = [...Array(5)].map((_, index) => <AiFillStar key={index} color="var(--text-header)" />);
-	const star4 = [...Array(5)].map((_, index) =>
-		index === 4 ? (
-			<AiFillStar key={index} color="var(--text-dark)" />
-		) : (
-			<AiFillStar key={index} color="var(--text-header)" />
-		)
-	);
+	const handleHeartClick = (event) => {
+		event.preventDefault();
+		setIsHearted(!isHearted);
+	};
 
 	return (
 		<Card
@@ -44,10 +40,7 @@ const ProductCard = ({ to = '', image, title, price, description, rating }) => {
 									: 'opacity-0 transition-opacity duration-[1s] group-hover/card:opacity-100'
 							} `
 						)}
-						onClick={(e) => {
-							e.preventDefault();
-							setIsHearted(!isHearted);
-						}}
+						onClick={handleHeartClick}
 					>
 						{isHearted ? (
 							<AiFillHeart className="scale-[1.16] text-[1.9rem] text-heading group-active/btn:scale-[1.23]" />
@@ -57,9 +50,8 @@ const ProductCard = ({ to = '', image, title, price, description, rating }) => {
 					</button>
 					<img
 						className={twMerge(
-							`h-full rounded-[0.8rem_0.8rem_0_0] object-cover brightness-[0.9] transition-all duration-[800ms] ease-in-out group-hover/card:scale-[1.17] ${
-								isHearted ? 'scale-[1.17]' : ''
-							}`
+							`h-full rounded-[0.8rem_0.8rem_0_0] object-cover brightness-[0.9] transition-all duration-[800ms] ease-in-out group-hover/card:scale-[1.17]
+							${isHearted ? 'scale-[1.17]' : ''}`
 						)}
 						src={image}
 						alt=""
@@ -76,10 +68,7 @@ const ProductCard = ({ to = '', image, title, price, description, rating }) => {
 						</span>
 					</header>
 					<p className="mt-[0.5rem] min-h-[6rem] max-w-[30ch] text-[1rem]">{description}</p>
-					<div className="mt-[1rem] flex items-center text-[1.2rem]">
-						{rating > 4.5 ? star5 : star4}
-						<span className="ml-[1rem]">{rating}</span>
-					</div>
+					<StarRating rating={rating} />
 				</Card.Body>
 
 				<Card.Footer className="p-[1.3rem_1rem_1rem]">

@@ -32,7 +32,7 @@ module.exports = {
 
 			animation: {
 				'fade-in-down': 'fade-in-down 1.3s',
-				'fade-in-up': 'fade-in-up 1.9s ease-out',
+				'fade-in-up': 'fade-in-up 1.7s ease-out',
 				'fade-in-up-2': 'fade-in-up-2 1.3s ease-out',
 			},
 

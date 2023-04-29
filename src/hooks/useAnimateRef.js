@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import { useRef, useEffect } from 'react';
 import { useGlobalStore } from '../zustand-store/globalStore';
 
@@ -29,14 +30,13 @@ const useAnimateRef = () => {
 
 		// Animation Timeout
 		let fadeAnimationId;
-		// eslint-disable-next-line prefer-const
+
 		fadeAnimationId = setTimeout(() => {
 			elements.forEach((elem) => {
 				elementRef.current[elem.target].classList.remove(elem.animationClass);
 			});
 		}, 2000);
 
-		// Cleanup
 		return () => clearTimeout(fadeAnimationId);
 	}, [currentSlide]);
 

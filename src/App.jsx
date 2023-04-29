@@ -12,7 +12,7 @@ const App = () => {
 		<Route path="/" element={<GlobalLayout />}>
 			<Route index element={<Home />} />
 			<Route path="all-products" element={<ProductsPage />} />
-			<Route path="all-products/:id" element={<ProductItem />} />
+			<Route path="all-products/:productId" element={<ProductItem />} />
 		</Route>
 	);
 

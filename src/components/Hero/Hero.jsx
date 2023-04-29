@@ -14,17 +14,20 @@ const images = [
 
 const Hero = () => {
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
-
 	const { animatedElements } = useAnimateRef();
 
 	const styles = {
+		outerContainer: 'max-lg:mx-[1rem] h-[38rem] md:h-[41.4rem] lg:h-[46rem]',
+		innerContainer: `max-lg:rounded-[0.7rem] ${
+			isDarkMode ? 'max-lg:[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''
+		}`,
 		leftBtn: 'md:left-[0.8rem] hover:[box-shadow:0_0_5px_var(--text-dark)] lg:left-[29.5rem]',
 		rightBtn: 'hover:[box-shadow:0_0_5px_var(--text-dark)] md:right-[0.8rem]',
 	};
 
 	const carouselItems = images.map((image) => (
 		<Carousel.Item key={image}>
-			<img className="h-full object-cover" src={image} alt="" />
+			<img className="object-cover" src={image} alt="" />
 		</Carousel.Item>
 	));
 
@@ -33,22 +36,23 @@ const Hero = () => {
 	));
 
 	return (
-		<section id="Hero" className={`max-md:mt-[2rem] lg:bg-primary`}>
+		<section id="Hero" className="lg:bg-primary">
 			<Carousel
-				className={`
-						h-[38rem] max-lg:mx-[1rem] max-lg:rounded-[0.7rem] md:h-[41.4rem] lg:h-[46rem]
-						${isDarkMode ? 'max-lg:[box-shadow:0_0_3px_0.1px_var(--carousel-dot)]' : ''}
-				`}
+				outerClassName={styles.outerContainer}
+				innerClassName={styles.innerContainer}
 				images={images}
 				arrowIcon={<RxPaperPlane />}
 				leftBtnClasses={styles.leftBtn}
 				rightBtnClasses={styles.rightBtn}
+				isAutoSlide={true}
+				pauseOnHover={true}
+				autoSlideInterval={10000}
 			>
-				<Carousel.ItemWrapper>{carouselItems}</Carousel.ItemWrapper>
+				<Carousel.ItemWrapper className={'brightness-[0.6]'}>{carouselItems}</Carousel.ItemWrapper>
 
 				<Carousel.Caption
 					className={
-						'absolute mt-[5.5rem] flex w-full select-none flex-col items-start gap-[1rem] px-[3.5rem] text-light md:pl-[7.5rem] lg:mt-[8rem] lg:pl-[36rem]'
+						'flex flex-col items-start px-[4.5rem] pt-[5.5rem] md:pl-[7.5rem] lg:pl-[36rem] lg:pt-[8rem]'
 					}
 				>
 					<div className="w-[28ch] lg:w-[30ch]">
@@ -60,14 +64,14 @@ const Hero = () => {
 						</h1>
 						<p
 							ref={(elem) => (animatedElements.paragraph = elem)}
-							className="relative z-20 w-[30ch] text-[clamp(1.3rem,_1vw+1rem,_1.7rem)] [margin-block:1.8rem_3rem]"
+							className="z-20 w-[30ch] text-[clamp(1.3rem,_1vw+1rem,_1.7rem)] [margin-block:1.8rem_3.7rem]"
 						>
 							Discover the Latest and most Exquisite Tech Products for Your Home, Office, and
 							On-the-go Needs.
 						</p>
 					</div>
 
-					<div ref={(elem) => (animatedElements.button = elem)}>
+					<div className="z-50" ref={(elem) => (animatedElements.button = elem)}>
 						<Button
 							theme={'secondary'}
 							className="text-[clamp(1.3rem,_1vw+1rem,_1.7rem)] font-[600] transition-shadow duration-[400ms] hover:[box-shadow:0_10px_20px_hsl(43,100%,55%,0.4)] active:scale-[1.04] max-sm:p-[1rem_2.8rem]"

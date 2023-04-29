@@ -80,7 +80,6 @@
 	/* Transition for smooth theme change */
 	.theme-transition,
 	.theme-transition * {
-		transition: background-color 200ms linear;
+		transition: background-color 200ms linear, color 10ms linear;
 	}
-
 }

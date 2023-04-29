@@ -11,10 +11,10 @@ const NavigationLinks = ({ logo }) => {
 	const isDarkMode = useThemeStore((state) => state.isDarkMode);
 	const isDesktop = useGlobalStore((state) => state.isDesktop);
 	const isNavShow = useGlobalStore((state) => state.isNavShow);
-	const { toggleNavShow, closeNavShow } = useGlobalActions();
+	const { closeNavShow } = useGlobalActions();
 	const handleCategoryShow = () => setIsCategoryShow(!isCategoryShow);
 
-	// Close Category on Route Change that's not Home
+	// Close Category on Route Change that's not the HomePage
 	useEffect(() => {
 		if (location.pathname === '/') {
 			setIsCategoryShow(true);
@@ -32,11 +32,6 @@ const NavigationLinks = ({ logo }) => {
 						: ''
 				}
 				${isNavShow ? 'w-[min(21rem,_80%)] md:w-[24rem] [transition:width_500ms_ease]' : ''}
-		`),
-
-		OVERLAY_CLASSES: twMerge(`
-				fixed z-[80] w-0 bg-[hsl(0,0%,0%,0.6)] [inset:0_0_0_auto]
-				${isNavShow ? 'w-screen' : ''}
 		`),
 
 		CATEGORY_LIST_CLASSES: twMerge(`
@@ -71,14 +66,6 @@ const NavigationLinks = ({ logo }) => {
 
 	return (
 		<article id="Navigation Links" className="w-full">
-			{/* HAMBURGER OVERLAY */}
-			{!isDesktop && (
-				<div onClick={toggleNavShow} className={styles.OVERLAY_CLASSES}>
-					{/* Background Overlay here */}
-				</div>
-			)}
-
-			{/* NAVIGATION LINKS */}
 			<nav className="flex w-[100%] items-center justify-between font-[500] lg:pr-[2rem] ">
 				{isDesktop && (
 					<div id="Shop By Categories" className="relative z-50 ml-[0.5rem]">
@@ -96,6 +83,7 @@ const NavigationLinks = ({ logo }) => {
 					</div>
 				)}
 
+				{/* NAVIGATION LINKS */}
 				<ul id="Navigation List" className={styles.NAVLIST_CLASSES}>
 					{!isDesktop && (
 						<img className="mb-[2rem] ml-[4rem] w-[13rem] md:w-[16rem]" src={logo} alt="" />
@@ -108,7 +96,7 @@ const NavigationLinks = ({ logo }) => {
 						<Link to="/all-products">Products</Link>
 					</li>
 					<li className="max-lg:pl-[4rem]" onClick={closeNavShow}>
-						<Link to="">Contact</Link>
+						<Link to="#">Contact</Link>
 					</li>
 				</ul>
 

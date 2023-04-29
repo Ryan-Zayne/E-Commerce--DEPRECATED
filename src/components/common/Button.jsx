@@ -14,6 +14,7 @@ const Button = ({
 		regular: 'rounded-[0.5rem]',
 		input: 'rounded-[0_2.5rem_2.5rem_0]',
 		cart: 'rounded-[0.8rem]',
+		shop: 'rounded-[2.5rem]',
 	};
 
 	const semanticThemes = {
@@ -43,4 +44,4 @@ const Button = ({
 	);
 };
 
-export default memo(Button); // To prevent forced re-renders when no props change ;
+export default memo(Button); // To prevent forced re-renders when no props change;

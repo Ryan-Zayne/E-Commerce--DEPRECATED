@@ -3,51 +3,69 @@ import { useGlobalActions, useGlobalStore } from '../../zustand-store/globalStor
 import { useCarousel } from '../../hooks';
 
 const Carousel = ({
+	as = 'article',
 	children,
-	className = '',
-	leftBtnClasses = '',
-	rightBtnClasses = '',
+	outerClassName = '',
+	innerClassName = '',
 	images,
 	arrowIcon,
-	isAutoSlide,
-	autoSlideInterval = 8000,
-	pauseOnHover,
+	leftBtnClasses = '',
+	rightBtnClasses = '',
+	isAutoSlide = false,
+	autoSlideInterval = 10000,
+	pauseOnHover = false,
 }) => {
+	const Element = as;
 	const isMobile = useGlobalStore((state) => state.isMobile);
 
 	const { setIsPaused, nextSlideButton, previousSlideButton } = useCarousel({
 		numberOfSlides: images.length,
-		isAutoSlide,
+		isAutoSlide: !isMobile && isAutoSlide,
 		autoSlideInterval,
 	});
 
 	return (
-		<article
+		<Element
 			id="Carousel"
-			className={twMerge(`relative flex overflow-hidden ${className}`)}
+			className={twMerge(`relative flex select-none ${outerClassName}`)}
 			onMouseEnter={() => (pauseOnHover && !isMobile === true ? setIsPaused(true) : null)}
 			onMouseLeave={() => (pauseOnHover && !isMobile === true ? setIsPaused(false) : null)}
 		>
-			<button
-				onClick={previousSlideButton}
-				className={twMerge(
-					`absolute left-[0.4rem] top-[45%] z-10 rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] active:scale-[1.11] ${leftBtnClasses}`
-				)}
-			>
-				{arrowIcon}
+			<button className="absolute left-0 z-40 h-full w-[9rem]" onClick={previousSlideButton}>
+				<span
+					className={twMerge(
+						`absolute left-[0.7rem] top-[45%] rotate-180 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] active:scale-[1.11] ${leftBtnClasses}`
+					)}
+				>
+					{arrowIcon}
+				</span>
 			</button>
 
-			{children}
-
-			<button
-				onClick={nextSlideButton}
+			<div
+				id="Carousel Inner"
 				className={twMerge(
-					`absolute right-[0.4rem] top-[45%] z-10 rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] active:scale-[1.11] ${rightBtnClasses}`
+					`flex h-full overflow-x-scroll scroll-smooth [scroll-snap-type:x_mandatory] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${innerClassName}`
 				)}
 			>
-				{arrowIcon}
+				{children}
+			</div>
+
+			<button className="absolute right-0 z-40 h-full w-[9rem]" onClick={nextSlideButton}>
+				<span
+					className={twMerge(
+						`absolute right-[0.7rem] top-[45%] rounded-[5px] bg-carousel-btn p-[0.8rem_0.5rem] transition-[transform] active:scale-[1.11] ${rightBtnClasses}`
+					)}
+				>
+					{arrowIcon}
+				</span>
 			</button>
-		</article>
+		</Element>
+	);
+};
+
+const CarouselItem = ({ children, className = '' }) => {
+	return (
+		<li className={twMerge(`inline-flex w-full shrink-0 snap-center ${className}`)}>{children}</li>
 	);
 };
 
@@ -57,10 +75,10 @@ const CarouselItemWrapper = ({ children, className = '' }) => {
 		<ul
 			id="Carousel Image Content"
 			className={twMerge(
-				`h-full whitespace-nowrap transition-[translate] duration-[1000ms] ease-in-out ${className}`
+				`flex w-full shrink-0 flex-nowrap transition-[transform] duration-[600ms] ease-in-out ${className}`
 			)}
 			style={{
-				translate: `-${currentSlide * 100}%`,
+				transform: `translate3d(-${currentSlide * 100}%, 0, 0)`,
 			}}
 		>
 			{children}
@@ -68,22 +86,9 @@ const CarouselItemWrapper = ({ children, className = '' }) => {
 	);
 };
 
-const CarouselItem = ({ children, className = '' }) => {
-	return (
-		<li className={twMerge(`inline-flex h-full w-full items-center justify-center ${className}`)}>
-			{children}
-		</li>
-	);
-};
-
 const CarouselCaption = ({ children, className = '' }) => {
 	return (
-		<div
-			id="Carousel Caption"
-			className={twMerge(
-				`absolute flex w-full select-none flex-col items-start gap-[1rem] ${className}`
-			)}
-		>
+		<div id="Carousel Caption" className={twMerge(`absolute inset-0 text-light ${className}`)}>
 			{children}
 		</div>
 	);
@@ -92,7 +97,7 @@ const CarouselCaption = ({ children, className = '' }) => {
 const CarouselIndicatorWrapper = ({ children, className = '' }) => {
 	return (
 		<span
-			id="Slider dots"
+			id="Carousel Indicators"
 			className={`absolute bottom-[2.5rem] inline-flex w-full items-center justify-center gap-[1.5rem] ${className}`}
 		>
 			{children}
@@ -100,15 +105,15 @@ const CarouselIndicatorWrapper = ({ children, className = '' }) => {
 	);
 };
 
-const CarouselIndicator = ({ size, isActiveSize, index }) => {
+const CarouselIndicator = ({ className = '', onActiveClassName, index }) => {
 	const currentSlide = useGlobalStore((state) => state.currentSlide);
 	const { goToSlide } = useGlobalActions();
 	return (
 		<span
 			onClick={() => goToSlide(index)}
 			className={twMerge(`
-				inline-block h-[0.8rem] w-[0.8rem] shrink-0 cursor-pointer rounded-[50%] bg-carousel-btn ease-in-out hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)] ${size}
-				${index === currentSlide ? `w-[3.5rem] rounded-[0.5rem] bg-carousel-dot ${isActiveSize}` : ''}
+				inline-block h-[0.6rem] w-[0.6rem] shrink-0 cursor-pointer rounded-[50%] bg-carousel-btn ease-in-out hover:bg-carousel-dot hover:[box-shadow:0_0_5px_var(--carousel-dot)] ${className}
+				${index === currentSlide ? `w-[3.5rem] rounded-[0.5rem] bg-carousel-dot ${onActiveClassName}` : ''}
 			`)}
 		/>
 	);

@@ -3,6 +3,7 @@ import { Button } from '../common';
 
 const SearchForm = ({ className, buttonIcon, theme, variant, size, placeholder, children }) => (
 	<form
+		id="Search Form"
 		className={`flex items-center ${className ?? 'w-[min(100%,_54vw)]'}`}
 		onSubmit={(e) => e.preventDefault()}
 	>
